@@ -1,13 +1,20 @@
-// Middleware to check for dev password
+// Middleware to check for dev password - ONLY on dev domains
 const DEV_PASSWORD = import.meta.env.DEV_PASSWORD || 'dev-secret-123';
 
 export function onRequest({ request, redirect }: any, next: any) {
-  // Only protect if DEV_PASSWORD is set
-  if (!DEV_PASSWORD) {
+  const url = new URL(request.url);
+  const hostname = url.hostname;
+  
+  // Only protect dev domains
+  const isDevDomain = hostname.includes('dev.') || 
+                      hostname.includes('preview.') || 
+                      hostname.includes('localhost') ||
+                      hostname.includes('127.0.0.1');
+  
+  // Skip protection for production
+  if (!isDevDomain) {
     return next();
   }
-  
-  const url = new URL(request.url);
   
   // Check for auth cookie
   const cookie = request.headers.get('cookie');
