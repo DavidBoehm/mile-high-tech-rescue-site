@@ -178,35 +178,75 @@ const canonicalUrl = Astro.url.pathname;
     Skip to main content
   </a>
   
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-tech-dark/90 backdrop-blur-md border-b border-white/10" role="navigation" aria-label="Main navigation">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="/" class="flex items-center space-x-2" aria-label="Mile High Tech Rescue - Home">
-          <div class="w-8 h-8 bg-gradient-to-br from-tech-accent to-tech-cyan rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
+  <!-- Navigation - Premium Glassmorphism Design -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out" role="navigation" aria-label="Main navigation">
+    <!-- Glassmorphism Background Layer -->
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xl border-b border-white/5 transition-all duration-500" id="navBg"></div>
+    
+    <!-- Gradient Glow Effect (subtle) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-cyan-500/5 opacity-0 transition-opacity duration-500" id="navGlow"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo - Enhanced with hover effect -->
+        <a href="/" class="group flex items-center space-x-3" aria-label="Mile High Tech Rescue - Home">
+          <div class="relative">
+            <!-- Logo glow on hover -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+            <div class="relative w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow duration-300">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
           </div>
-          <span class="font-bold text-xl">Mile High Tech Rescue</span>
+          <div class="flex flex-col">
+            <span class="font-bold text-lg tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-cyan-300 transition-all duration-300">Mile High Tech Rescue</span>
+            <span class="text-[10px] text-gray-400 uppercase tracking-widest hidden sm:block">Denver's Smart Home Experts</span>
+          </div>
         </a>
         
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="/#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
-          <a href="/coverage" class="text-gray-300 hover:text-white transition-colors">Coverage</a>
-          <a href="/solutions" class="text-gray-300 hover:text-white transition-colors">Solutions</a>
-          <a href="/business" class="text-gray-300 hover:text-white transition-colors">Business</a>
-          <a href="/#pricing" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
-          <a href="/#contact" class="bg-tech-accent hover:bg-tech-cyan text-white px-6 py-2 rounded-full font-medium transition-all hover:shadow-lg hover:shadow-tech-accent/25">
-            Get Help Now
+        <!-- Desktop Navigation - Premium Links -->
+        <div class="hidden lg:flex items-center space-x-1">
+          <a href="/#services" class="nav-link group relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300">
+            <span class="relative z-10">Services</span>
+            <span class="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          <a href="/coverage" class="nav-link group relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300">
+            <span class="relative z-10">Coverage</span>
+            <span class="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          <a href="/solutions" class="nav-link group relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300">
+            <span class="relative z-10">Solutions</span>
+            <span class="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          <a href="/business" class="nav-link group relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300">
+            <span class="relative z-10">Business</span>
+            <span class="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          <a href="/#pricing" class="nav-link group relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300">
+            <span class="relative z-10">Pricing</span>
+            <span class="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          
+          <!-- CTA Button - Premium Glassmorphism -->
+          <a href="/#contact" class="group relative ml-4 overflow-hidden rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 p-[1px] transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105">
+            <span class="relative flex items-center gap-2 px-6 py-2.5 bg-slate-900 rounded-full text-sm font-semibold text-white transition-colors duration-300 group-hover:bg-transparent">
+              <span>Get Help Now</span>
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </span>
           </a>
         </div>
 
-        <!-- Mobile menu button -->
-        <button class="md:hidden p-2" aria-label="Menu" aria-expanded="false">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
+        <!-- Mobile Menu Button - Animated Hamburger -->
+        <button id="mobileMenuBtn" class="lg:hidden relative p-2 group" aria-label="Menu" aria-expanded="false">
+          <div class="w-6 h-5 flex flex-col justify-between items-end">
+            <span class="w-full h-0.5 bg-white transition-all duration-300 origin-right group-hover:w-4"></span>
+            <span class="w-full h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-3/4 h-0.5 bg-white transition-all duration-300 origin-right group-hover:w-full"></span>
+          </div>
         </button>
       </div>
     </div>
@@ -268,5 +308,42 @@ const canonicalUrl = Astro.url.pathname;
       </div>
     </div>
   </footer>
+  <!-- Navbar Scroll Effect -->
+  <script is:inline>
+    (function() {
+      const nav = document.getElementById('mainNav');
+      const navBg = document.getElementById('navBg');
+      const navGlow = document.getElementById('navGlow');
+      
+      if (!nav) return;
+      
+      let lastScroll = 0;
+      
+      window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        // Add solid background when scrolled
+        if (currentScroll > 50) {
+          navBg.classList.remove('bg-slate-900/60');
+          navBg.classList.add('bg-slate-900/90');
+          navGlow.classList.add('opacity-100');
+        } else {
+          navBg.classList.add('bg-slate-900/60');
+          navBg.classList.remove('bg-slate-900/90');
+          navGlow.classList.remove('opacity-100');
+        }
+        
+        // Shrink on scroll
+        if (currentScroll > 100) {
+          nav.classList.add('py-0');
+        } else {
+          nav.classList.remove('py-0');
+        }
+        
+        lastScroll = currentScroll;
+      }, { passive: true });
+    })();
+  </script>
+
 </body>
 </html>
