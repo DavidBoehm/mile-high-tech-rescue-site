@@ -3,8 +3,6 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [main, dev]
-  pull_request:
-    branches: [main]
 
 jobs:
   deploy:
@@ -30,29 +28,18 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/pages-action@v1.5.0
         with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: mile-high-tech-rescue
+          projectName: mile-high-tech-rescue-site
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Comment Preview URL
-        if: github.ref == 'refs/heads/dev'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.repos.createCommitComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              commit_sha: context.sha,
-              body: '🚀 **Preview Deployed!**\n\nView changes at: https://dev.milehightechrescue.com'
-            })
 
       - name: Show URLs
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "✅ Production: https://milehightechrescue.com"
           else
-            echo "🔨 Preview: Check GitHub commit comments or Cloudflare dashboard for URL"
+            echo "🔨 Preview: Check Cloudflare dashboard for URL"
           fi
