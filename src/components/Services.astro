@@ -1,185 +1,288 @@
 ---
 ---
 
-<section id="services" class="py-24 bg-tech-dark">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="services" class="py-24 bg-slate-900 relative overflow-hidden">
+  
+  <!-- Ambient Background Effect -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Services That <span class="text-tech-accent">Rescue</span> Your Tech
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
+        <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+        <span class="text-sm text-blue-300">What We Do Best</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-white">
+          Services That 
+        </span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Rescue</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-white">
+          Your Tech
+        </span>
       </h2>
+      
       <p class="text-xl text-gray-400 max-w-2xl mx-auto">
         From smart home setups to enterprise IT, we handle the technology so you don't have to.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      
       <!-- Service 1: Smart Home Setup -->
-      <div class="group bg-tech-card border border-white/10 rounded-2xl p-8 hover:border-tech-accent/50 transition-all hover:shadow-xl hover:shadow-tech-accent/10">
-        <div class="w-14 h-14 bg-gradient-to-br from-tech-accent/20 to-tech-cyan/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7 text-tech-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold mb-3">Smart Home Setup</h3>
-        <p class="text-gray-400 mb-6 leading-relaxed">
-          Complete smart home transformation. We install and configure lights, thermostats, locks, cameras, and voice assistants that actually work together.
-        </p>
+      <div class="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 
+                  hover:border-blue-500/50 transition-all duration-500 ease-out
+                  hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+                  style="animation: fadeInUp 0.6s ease-out 0.1s both;">
         
-        <ul class="space-y-2 text-gray-500">
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Voice control setup
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Lighting automation
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Smart lock installation
-          </li>
-        </ul>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 
+                      group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
+            <svg class="w-7 h-7 text-blue-400 group-hover:text-cyan-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors duration-300">Smart Home Setup</h3>
+          
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Complete smart home transformation. We install and configure lights, thermostats, locks, cameras, and voice assistants that actually work together.
+          </p>
+          
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Voice control setup
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Lighting automation
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Smart lock installation
+            </li>
+          </ul>
+        </div>
       </div>
 
       <!-- Service 2: IoT Integration -->
-      <div class="group bg-tech-card border border-white/10 rounded-2xl p-8 hover:border-tech-accent/50 transition-all hover:shadow-xl hover:shadow-tech-accent/10">
-        <div class="w-14 h-14 bg-gradient-to-br from-tech-accent/20 to-tech-cyan/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7 text-tech-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold mb-3">IoT Integration</h3>
-        <p class="text-gray-400 mb-6 leading-relaxed">
-          Connect everything. We integrate sensors, devices, and systems into unified platforms that give you real-time control and automation.
-        </p>
+      <div class="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 
+                  hover:border-blue-500/50 transition-all duration-500 ease-out
+                  hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+                  style="animation: fadeInUp 0.6s ease-out 0.2s both;">
         
-        <ul class="space-y-2 text-gray-500">
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Custom dashboards
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Sensor networks
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            API integrations
-          </li>
-        </ul>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 
+                      group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
+            <svg class="w-7 h-7 text-blue-400 group-hover:text-cyan-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors duration-300">IoT Integration</h3>
+          
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Connect everything. We integrate sensors, devices, and systems into unified platforms that give you real-time control and automation.
+          </p>
+          
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Custom dashboards
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Sensor networks
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              API integrations
+            </li>
+          </ul>
+        </div>
       </div>
 
       <!-- Service 3: Network Security -->
-      <div class="group bg-tech-card border border-white/10 rounded-2xl p-8 hover:border-tech-accent/50 transition-all hover:shadow-xl hover:shadow-tech-accent/10">
-        <div class="w-14 h-14 bg-gradient-to-br from-tech-accent/20 to-tech-cyan/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7 text-tech-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold mb-3">Network Security</h3>
-        <p class="text-gray-400 mb-6 leading-relaxed">
-          Secure your digital perimeter. Enterprise-grade protection for homes and small businesses, with monitoring and threat response.
-        </p>
+      <div class="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 
+                  hover:border-blue-500/50 transition-all duration-500 ease-out
+                  hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+                  style="animation: fadeInUp 0.6s ease-out 0.3s both;">
         
-        <ul class="space-y-2 text-gray-500">
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Firewall setup
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            VPN configuration
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Threat monitoring
-          </li>
-        </ul>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 
+                      group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
+            <svg class="w-7 h-7 text-blue-400 group-hover:text-cyan-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors duration-300">Network Security</h3>
+          
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Secure your digital perimeter. Enterprise-grade protection for homes and small businesses, with monitoring and threat response.
+          </p>
+          
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Firewall setup
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              VPN configuration
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Threat monitoring
+            </li>
+          </ul>
+        </div>
       </div>
 
       <!-- Service 4: IT Support -->
-      <div class="group bg-tech-card border border-white/10 rounded-2xl p-8 hover:border-tech-accent/50 transition-all hover:shadow-xl hover:shadow-tech-accent/10">
-        <div class="w-14 h-14 bg-gradient-to-br from-tech-accent/20 to-tech-cyan/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7 text-tech-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold mb-3">IT Support</h3>
-        <p class="text-gray-400 mb-6 leading-relaxed">
-          Tech emergencies solved fast. Remote and on-site support for computers, networks, and devices that just won't cooperate.
-        </p>
+      <div class="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 
+                  hover:border-blue-500/50 transition-all duration-500 ease-out
+                  hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+                  style="animation: fadeInUp 0.6s ease-out 0.4s both;">
         
-        <ul class="space-y-2 text-gray-500">
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Remote diagnostics
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Hardware repair
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Data recovery
-          </li>
-        </ul>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 
+                      group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
+            <svg class="w-7 h-7 text-blue-400 group-hover:text-cyan-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors duration-300">IT Support</h3>
+          
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Tech emergencies solved fast. Remote and on-site support for computers, networks, and devices that just won't cooperate.
+          </p>
+          
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Remote diagnostics
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Hardware repair
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Data recovery
+            </li>
+          </ul>
+        </div>
       </div>
 
       <!-- Service 5: Automation Systems -->
-      <div class="group bg-tech-card border border-white/10 rounded-2xl p-8 hover:border-tech-accent/50 transition-all hover:shadow-xl hover:shadow-tech-accent/10">
-        <div class="w-14 h-14 bg-gradient-to-br from-tech-accent/20 to-tech-cyan/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7 text-tech-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold mb-3">Automation Systems</h3>
-        <p class="text-gray-400 mb-6 leading-relaxed">
-          Set it and forget it. Custom automation workflows that make your space work smarter, not harder. Climate, lighting, security triggers.
-        </p>
+      <div class="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 
+                  hover:border-blue-500/50 transition-all duration-500 ease-out
+                  hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+                  style="animation: fadeInUp 0.6s ease-out 0.5s both;">
         
-        <ul class="space-y-2 text-gray-500">
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Scene programming
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Schedule automation
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Trigger-based rules
-          </li>
-        </ul>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 
+                      group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
+            <svg class="w-7 h-7 text-blue-400 group-hover:text-cyan-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors duration-300">Automation Systems</h3>
+          
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Set it and forget it. Custom automation workflows that make your space work smarter, not harder. Climate, lighting, security triggers.
+          </p>
+          
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Scene programming
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Schedule automation
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Trigger-based rules
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Service 6: Consultation -->
-      <div class="group bg-tech-card border border-white/10 rounded-2xl p-8 hover:border-tech-accent/50 transition-all hover:shadow-xl hover:shadow-tech-accent/10">
-        <div class="w-14 h-14 bg-gradient-to-br from-tech-accent/20 to-tech-cyan/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7 text-tech-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold mb-3">Tech Consultation</h3>
-        <p class="text-gray-400 mb-6 leading-relaxed">
-          Not sure what you need? We'll audit your current setup and design a technology roadmap tailored to your goals and budget.
-        </p>
+      <!-- Service 6: Tech Consultation -->
+      <div class="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 
+                  hover:border-blue-500/50 transition-all duration-500 ease-out
+                  hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+                  style="animation: fadeInUp 0.6s ease-out 0.6s both;">
         
-        <ul class="space-y-2 text-gray-500">
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Technology audits
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            ROI analysis
-          </li>
-          <li class="flex items-center">
-            <span class="w-1.5 h-1.5 bg-tech-cyan rounded-full mr-3"></span>
-            Implementation plans
-          </li>
-        </ul>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 
+                      group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
+            <svg class="w-7 h-7 text-blue-400 group-hover:text-cyan-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors duration-300">Tech Consultation</h3>
+          
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Not sure what you need? We'll audit your current setup and design a technology roadmap tailored to your goals and budget.
+          </p>
+          
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Technology audits
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              ROI analysis
+            </li>
+            <li class="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+              Implementation plans
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+  
+  <!-- Staggered Animation Styles -->
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </section>
