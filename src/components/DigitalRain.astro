@@ -2,7 +2,7 @@
 ---
 
 <div class="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-  <canvas id="digitalRain" class="w-full h-full" style="filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.3));"></canvas>
+  <canvas id="digitalRain" class="w-full h-full" style="filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));"></canvas>
 </div>
 
 <script is:inline>
@@ -12,117 +12,92 @@
     
     const ctx = canvas.getContext('2d');
     
-    // Set canvas size - use half resolution for performance
+    // Set canvas size
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio, 1.5); // Cap at 1.5x
-      canvas.width = Math.floor(canvas.offsetWidth * dpr);
-      canvas.height = Math.floor(canvas.offsetHeight * dpr);
-      ctx.scale(dpr, dpr);
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     }
     resize();
-    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('resize', resize);
     
     // Characters to use
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ';
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン☆★♦♠♣♥';
     
-    // Larger font = fewer columns = better performance
-    const fontSize = 20;
-    let columns = Math.ceil(canvas.offsetWidth / fontSize);
+    // Column setup
+    const fontSize = 16;
+    let columns = Math.floor(canvas.width / fontSize);
     const drops = [];
     
-    // Splash particles - limited array
-    const splashes = [];
-    const MAX_SPLASHES = 10; // Limit concurrent splashes
+    // Rainbow color generator
+    function getRainbowColor(position, time) {
+      const hue = (position + time * 0.5) % 360;
+      return `hsl(${hue}, 80%, 60%)`;
+    }
     
-    // Initialize drops
+    // Initialize drops at random heights
     for (let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -100;
+      drops[i] = Math.random() * -200;
     }
     
     let frameCount = 0;
     let time = 0;
     
-    // Pre-calculate colors
-    function getDropHue(i) {
-      return (i * 3) % 360;
-    }
-    
     function draw() {
+      // Semi-transparent fade for trail effect
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.font = 'bold ' + fontSize + 'px monospace';
+      
+      // Slow down - only update every 3rd frame
       frameCount++;
-      
-      // Only update every 4th frame (15fps) for performance
-      const shouldUpdate = frameCount % 4 === 0;
-      
-      // Clear with fade
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.15)';
-      ctx.fillRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
-      
-      ctx.font = fontSize + 'px monospace';
+      const shouldUpdate = frameCount % 3 === 0;
       
       if (shouldUpdate) {
-        time += 1;
+        time += 0.5;
       }
       
-      // Update and draw splashes (every frame for smoothness)
-      ctx.fillStyle = '#fff';
-      for (let i = splashes.length - 1; i >= 0; i--) {
-        const splash = splashes[i];
-        splash.life--;
-        
-        // Very subtle splash - just 2 tiny dots
-        if (splash.life > 8) {
-          const alpha = (splash.life - 8) / 4 * 0.3; // Max 0.3 opacity
-          ctx.fillStyle = `hsla(${splash.hue}, 80%, 60%, ${alpha})`;
-          
-          // Left particle
-          const lx = splash.x - (12 - splash.life) * 0.8;
-          const ly = splash.y - (12 - splash.life) * 0.3;
-          ctx.fillRect(lx, ly, 2, 2);
-          
-          // Right particle  
-          const rx = splash.x + (12 - splash.life) * 0.8;
-          const ry = splash.y - (12 - splash.life) * 0.3;
-          ctx.fillRect(rx, ry, 2, 2);
-        }
-        
-        if (splash.life <= 0) {
-          splashes.splice(i, 1);
-        }
-      }
-      
-      // Draw rain (only every other column for performance)
-      for (let i = 0; i < drops.length; i += 2) {
+      // Draw rain
+      for (let i = 0; i < drops.length; i++) {
+        // Random character
         const char = chars[Math.floor(Math.random() * chars.length)];
+        
         const x = i * fontSize + fontSize / 2;
         const y = drops[i] * fontSize;
         
-        if (y > 0 && y < canvas.offsetHeight) {
-          const hue = getDropHue(i + Math.floor(time));
-          ctx.fillStyle = `hsla(${hue}, 90%, 65%, 0.7)`;
+        if (y > 0 && y < canvas.height) {
+          // Rainbow gradient based on column position and time
+          const gradient = ctx.createLinearGradient(x, y - 20, x, y);
+          const hue1 = (i * 2 + time) % 360;
+          const hue2 = (i * 2 + time + 30) % 360;
+          
+          gradient.addColorStop(0, `hsla(${hue1}, 100%, 70%, 0.3)`);
+          gradient.addColorStop(1, `hsla(${hue2}, 100%, 70%, 1)`);
+          
+          ctx.fillStyle = gradient;
+          
+          // Add glow effect
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = `hsla(${(i * 2 + time) % 360}, 100%, 70%, 0.8)`;
+          
           ctx.fillText(char, x - fontSize / 2, y);
+          
+          // Reset shadow for next char
+          ctx.shadowBlur = 0;
         }
         
-        // Check if hit bottom
+        // Slow movement - only update on frames divisible by 3
         if (shouldUpdate) {
-          const nextY = (drops[i] + 1) * fontSize;
-          
-          // Hit bottom - create subtle splash (limited)
-          if (y > canvas.offsetHeight - 30 && nextY >= canvas.offsetHeight && splashes.length < MAX_SPLASHES) {
-            if (Math.random() > 0.7) { // Only 30% of drops create splashes
-              splashes.push({
-                x: x,
-                y: canvas.offsetHeight - 2,
-                hue: getDropHue(i),
-                life: 12 // 0.2 seconds at 60fps
-              });
-            }
-          }
-          
-          // Move drop
           drops[i]++;
           
-          // Reset
-          if (y > canvas.offsetHeight && Math.random() > 0.99) {
+          // Slow down even more randomly
+          if (Math.random() > 0.95) {
+            // Skip this update (character stays)
+            drops[i]--;
+          }
+          
+          // Reset when off screen
+          if (y > canvas.height && Math.random() > 0.985) {
             drops[i] = 0;
           }
         }
