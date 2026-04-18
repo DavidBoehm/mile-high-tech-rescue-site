@@ -3,190 +3,138 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Service Coverage Map - Mile High Tech Rescue">
-  <section class="py-20 bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="py-16 bg-[#0f172a]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
       <!-- Header -->
       <div class="text-center mb-12">
         <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
           Service Coverage Area
         </h1>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-          We proudly serve the Greater Denver Metro Area and surrounding communities. 
-          Same-day service available within our primary coverage zone.
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+          We proudly serve the Greater Denver Metro Area. Same-day service available within 25 miles of downtown Denver.
         </p>
       </div>
 
-      <!-- Map Container -->
-      <div class="bg-[#1e293b] rounded-2xl p-6 md:p-8 border border-gray-800 shadow-2xl mb-12">
-        <!-- Coverage Map SVG -->
-        <div class="relative w-full aspect-video bg-[#0f172a] rounded-xl overflow-hidden">
-          <svg viewBox="0 0 800 500" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <!-- Background -->
-            <rect width="800" height="500" fill="#0f172a"/>
-            
-            <!-- Colorado Outline (simplified) -->
-            <path d="M 150 200 L 180 180 L 220 175 L 280 170 L 350 165 L 420 160 L 500 155 L 580 150 L 650 145 L 680 140 
-                     L 685 200 L 680 280 L 675 350 L 670 420 L 665 480 
-                     L 600 485 L 520 490 L 440 495 L 360 498 L 280 500 
-                     L 200 495 L 140 490 L 145 420 L 148 350 L 150 280 Z" 
-                  fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
-            
-            <!-- Primary Coverage Zone (Denver Metro) -->
-            <circle cx="420" cy="300" r="80" fill="rgba(59, 130, 246, 0.3)" stroke="#3b82f6" stroke-width="3"/>
-            <!-- Secondary Coverage Zone -->
-            <circle cx="420" cy="300" r="130" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="2" stroke-dasharray="8,4"/>
-            
-            <!-- Major Cities -->
-            <!-- Denver -->
-            <circle cx="420" cy="300" r="8" fill="#3b82f6"/>
-            <text x="420" y="325" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Denver</text>
-            <!-- Boulder -->
-            <circle cx="380" cy="240" r="5" fill="#06b6d4"/>
-            <text x="380" y="225" text-anchor="middle" fill="#94a3b8" font-size="12">Boulder</text>
-            
-            <!-- Aurora -->
-            <circle cx="460" cy="310" r="5" fill="#06b6d4"/>
-            <text x="480" y="315" text-anchor="start" fill="#94a3b8" font-size="12">Aurora</text>
-            
-            <!-- Lakewood -->
-            <circle cx="400" cy="320" r="4" fill="#64748b"/>
-            <text x="385" y="340" text-anchor="middle" fill="#64748b" font-size="11">Lakewood</text>
-            
-            <!-- Thornton -->
-            <circle cx="420" cy="260" r="4" fill="#64748b"/>
-            <text x="445" y="255" text-anchor="start" fill="#64748b" font-size="11">Thornton</text>
-            
-            <!-- Westminster -->
-            <circle cx="400" cy="275" r="4" fill="#64748b"/>
-            <text x="350" y="275" text-anchor="end" fill="#64748b" font-size="11">Westminster</text>
-            
-            <!-- Arvada -->
-            <circle cx="390" cy="290" r="4" fill="#64748b"/>
-            <text x="360" y="295" text-anchor="end" fill="#64748b" font-size="11">Arvada</text>
-            
-            <!-- Centennial -->
-            <circle cx="440" cy="340" r="4" fill="#64748b"/>
-            <text x="460" y="355" text-anchor="start" fill="#64748b" font-size="11">Centennial</text>
-            
-            <!-- Highlands Ranch -->
-            <circle cx="430" cy="355" r="4" fill="#64748b"/>
-            <text x="450" y="375" text-anchor="start" fill="#64748b" font-size="11">Highlands Ranch</text>
-            
-            <!-- Littleton -->
-            <circle cx="415" cy="335" r="4" fill="#64748b"/>
-            <text x="380" y="350" text-anchor="end" fill="#64748b" font-size="11">Littleton</text>
-            
-            <!-- Legend -->
-            <rect x="580" y="380" width="180" height="90" fill="rgba(30, 41, 59, 0.95)" rx="8" stroke="#334155" stroke-width="1"/>
-            <text x="595" y="405" fill="white" font-size="14" font-weight="bold">Coverage Zones</text>
-            
-            <circle cx="600" cy="425" r="8" fill="rgba(59, 130, 246, 0.3)" stroke="#3b82f6" stroke-width="2"/>
-            <text x="620" y="430" fill="#cbd5e1" font-size="12">Same-Day Service</text>
-            
-            <circle cx="600" cy="450" r="8" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,2"/>
-            <text x="620" y="455" fill="#cbd5e1" font-size="12">Next-Day Service</text>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Coverage Details -->
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <!-- Primary Zone -->
-        <div class="bg-[#1e293b] p-8 rounded-xl border border-blue-500/30">
+      <!-- Coverage Cards Grid -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        
+        <!-- Same-Day Service Zone -->
+        <div class="bg-gradient-to-br from-blue-900/30 to-blue-800/10 border border-blue-500/30 rounded-2xl p-8">
           <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/40">
+              <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
               </svg>
             </div>
-            <h2 class="text-2xl font-bold text-white">Same-Day Zone</h2>
+            <div>
+              <h2 class="text-2xl font-bold text-white">Same-Day Service</h2>
+              <p class="text-blue-400 font-medium">Within 25 miles</p>
+            </div>
           </div>
           
-          <p class="text-gray-400 mb-4">
-            Emergency response within <span class="text-blue-400 font-bold">2 hours</span>.
-            Standard service same day when booked by 2 PM.
+          <p class="text-gray-400 mb-6">
+            Emergency response within 2 hours. Standard service same day when booked by 2 PM.
           </p>
           
-          <ul class="space-y-2 text-gray-300">
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Denver
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Aurora
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Lakewood
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Arvada
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Westminster
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Thornton
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Centennial
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-blue-400">✓</span> Highlands Ranch
-            </li>
-          </ul>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Denver</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Aurora</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Lakewood</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Arvada</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Westminster</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Thornton</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Centennial</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Highlands Ranch</span>
+            </div>
+          </div>
           
-          <div class="mt-6 pt-6 border-t border-gray-700">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-400">Service Fee</span>
-              <span class="text-2xl font-bold text-white">$0</span>
+          <div class="mt-8 pt-6 border-t border-blue-500/20">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400">Travel Fee</span>
+              <span class="text-2xl font-bold text-white">Free</span>
             </div>
           </div>
         </div>
 
-        <!-- Secondary Zone -->
-        <div class="bg-[#1e293b] p-8 rounded-xl border border-cyan-500/30">
+        <!-- Next-Day Service Zone -->
+        <div class="bg-gradient-to-br from-cyan-900/20 to-cyan-800/10 border border-cyan-500/30 rounded-2xl p-8">
           <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
-              <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-14 h-14 rounded-full bg-cyan-500/20 flex items-center justify-center border border-cyan-500/40">
+              <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
-            <h2 class="text-2xl font-bold text-white">Next-Day Zone</h2>
+            <div>
+              <h2 class="text-2xl font-bold text-white">Next-Day Service</h2>
+              <p class="text-cyan-400 font-medium">25-50 miles</p>
+            </div>
           </div>
           
-          <p class="text-gray-400 mb-4">
-            Scheduled service within <span class="text-cyan-400 font-bold">24-48 hours</span>.
-            Perfect for non-urgent appointments and consultations.
+          <p class="text-gray-400 mb-6">
+            Scheduled service within 24-48 hours. Perfect for non-urgent appointments and consultations.
           </p>
           
-          <ul class="space-y-2 text-gray-300">
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Boulder
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Broomfield
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Englewood
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Littleton
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Parker
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Castle Rock
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Golden
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-cyan-400">✓</span> Evergreen
-            </li>
-          </ul>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Boulder</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Parker</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Castle Rock</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Golden</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Evergreen</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Broomfield</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Littleton</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Englewood</span>
+            </div>
+          </div>
           
-          <div class="mt-6 pt-6 border-t border-gray-700">
-            <div class="flex items-center justify-between">
+          <div class="mt-8 pt-6 border-t border-cyan-500/20">
+            <div class="flex justify-between items-center">
               <span class="text-gray-400">Travel Fee</span>
               <span class="text-2xl font-bold text-white">$25</span>
             </div>
@@ -194,12 +142,87 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
+      <!-- Service Area Info -->
+      <div class="bg-[#1e293b] rounded-2xl p-8 border border-gray-800 mb-12">
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-bold text-blue-400 mb-2">25 mi</div>
+            <div class="text-gray-400">Same-Day Radius</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-cyan-400 mb-2">50 mi</div>
+            <div class="text-gray-400">Total Coverage</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-white mb-2">2 hrs</div>
+            <div class="text-gray-400">Emergency Response</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZIP Code Checker -->
+      <div class="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-2xl p-8 border border-gray-800 mb-12">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-white mb-2">Check Your ZIP Code</h3>
+          <p class="text-gray-400">Enter your ZIP code to see your service level</p>
+        </div>
+        
+        <div class="max-w-md mx-auto">
+          <div class="flex gap-2">
+            <input 
+              type="text" 
+              id="zipInput"
+              placeholder="Enter ZIP code (e.g., 80202)"
+              maxlength="5"
+              class="flex-1 px-4 py-3 bg-[#0f172a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+            >
+            <button 
+              onclick="checkZip()"
+              class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors"
+            >
+              Check
+            </button>
+          </div>
+          <div id="zipResult" class="mt-4 text-center"></div>
+        </div>
+        
+        <script is:inline>
+          const sameDayZips = ['80202', '80203', '80204', '80205', '80206', '80207', '80208', '80209', '80210', '80211', '80212', '80214', '80215', '80216', '80218', '80219', '80220', '80221', '80222', '80223', '80224', '80226', '80227', '80228', '80229', '80230', '80231', '80232', '80233', '80234', '80235', '80236', '80237', '80238', '80239', '80241', '80246', '80247', '80249', '80250', '80251', '80256', '80257', '80259', '80260', '80261', '80262', '80263', '80264', '80265', '80266', '80271', '80273', '80274', '80279', '80280', '80281', '80290', '80291', '80293', '80294', '80295', '80299', '80010', '80011', '80012', '80013', '80014', '80015', '80016', '80017', '80018', '80019', '80040', '80041', '80042', '80044', '80045', '80046', '80047', '80201', '80120', '80121', '80122', '80123', '80124', '80125', '80126', '80127', '80128', '80129', '80130', '80002', '80003', '80004', '80005', '80006', '80007', '80030', '80031', '80033', '80034', '80035', '80036', '80037', '80221', '80233', '80234', '80241', '80260', '80020', '80021', '80022', '80023', '80024', '80025', '80026', '80027', '80038', '80123', '80127', '80128', '80129', '80130', '80163', '80215', '80214', '80212', '80110', '80111', '80112', '80113', '80150', '80151', '80155', '80160', '80161', '80162', '80163', '80165', '80166'];
+          
+          const nextDayZips = ['80301', '80302', '80303', '80304', '80305', '80306', '80307', '80308', '80309', '80310', '80314', '80321', '80322', '80323', '80328', '80329', '80134', '80135', '80136', '80137', '80138', '80116', '80117', '80118', '80131', '80132', '80133', '80138', '80401', '80402', '80403', '80419', '80433', '80439', '80453', '80454', '80457', '80465', '80470', '80471'];
+          
+          function checkZip() {
+            const input = document.getElementById('zipInput');
+            const result = document.getElementById('zipResult');
+            const zip = input.value.trim();
+            
+            if (!zip || zip.length !== 5) {
+              result.innerHTML = '<p class="text-red-400">Please enter a valid 5-digit ZIP code</p>';
+              return;
+            }
+            
+            if (sameDayZips.includes(zip)) {
+              result.innerHTML = '<p class="text-blue-400 font-bold text-lg">✅ Same-Day Service Available!</p><p class="text-gray-400 text-sm mt-1">We can be there today</p>';
+            } else if (nextDayZips.includes(zip)) {
+              result.innerHTML = '<p class="text-cyan-400 font-bold text-lg">✓ Next-Day Service Available</p><p class="text-gray-400 text-sm mt-1">We can schedule you within 24-48 hours</p>';
+            } else {
+              result.innerHTML = '<p class="text-yellow-400 font-bold text-lg">📍 Outside Coverage Area</p><p class="text-gray-400 text-sm mt-1">Contact us for custom solutions</p>';
+            }
+          }
+          
+          // Allow Enter key
+          document.getElementById('zipInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkZip();
+          });
+        </script>
+      </div>
+
       <!-- CTA -->
       <div class="text-center">
         <p class="text-gray-400 mb-6">
           Not sure if you're in our coverage area? Contact us for a free consultation.
         </p>
-        <a href="/contact" 
+        <a href="/#contact" 
            class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:opacity-90 transition-opacity">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -207,6 +230,7 @@ import Layout from '../layouts/Layout.astro';
           Contact Us
         </a>
       </div>
+
     </div>
   </section>
 </Layout>
