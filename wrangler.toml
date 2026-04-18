@@ -1,0 +1,5 @@
+name = "mile-high-tech-rescue"
+compatibility_date = "2026-04-18"
+
+[site]
+bucket = "./dist"
