@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Service Coverage Map - Mile High Tech Rescue">
+  <section class="py-20 bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+          Service Coverage Area
+        </h1>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          We proudly serve the Greater Denver Metro Area and surrounding communities. 
+          Same-day service available within our primary coverage zone.
+        </p>
+      </div>
+
+      <!-- Map Container -->
+      <div class="bg-[#1e293b] rounded-2xl p-6 md:p-8 border border-gray-800 shadow-2xl mb-12">
+        <!-- Coverage Map SVG -->
+        <div class="relative w-full aspect-video bg-[#0f172a] rounded-xl overflow-hidden">
+          <svg viewBox="0 0 800 500" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="800" height="500" fill="#0f172a"/>
+            
+            <!-- Colorado Outline (simplified) -->
+            <path d="M 150 200 L 180 180 L 220 175 L 280 170 L 350 165 L 420 160 L 500 155 L 580 150 L 650 145 L 680 140 
+                     L 685 200 L 680 280 L 675 350 L 670 420 L 665 480 
+                     L 600 485 L 520 490 L 440 495 L 360 498 L 280 500 
+                     L 200 495 L 140 490 L 145 420 L 148 350 L 150 280 Z" 
+                  fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+            
+            <!-- Primary Coverage Zone (Denver Metro) -->
+            <circle cx="420" cy="300" r="80" fill="rgba(59, 130, 246, 0.3)" stroke="#3b82f6" stroke-width="3"/>
+            <!-- Secondary Coverage Zone -->
+            <circle cx="420" cy="300" r="130" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="2" stroke-dasharray="8,4"/>
+            
+            <!-- Major Cities -->
+            <!-- Denver -->
+            <circle cx="420" cy="300" r="8" fill="#3b82f6"/>
+            <text x="420" y="325" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Denver</text>
+            <!-- Boulder -->
+            <circle cx="380" cy="240" r="5" fill="#06b6d4"/>
+            <text x="380" y="225" text-anchor="middle" fill="#94a3b8" font-size="12">Boulder</text>
+            
+            <!-- Aurora -->
+            <circle cx="460" cy="310" r="5" fill="#06b6d4"/>
+            <text x="480" y="315" text-anchor="start" fill="#94a3b8" font-size="12">Aurora</text>
+            
+            <!-- Lakewood -->
+            <circle cx="400" cy="320" r="4" fill="#64748b"/>
+            <text x="385" y="340" text-anchor="middle" fill="#64748b" font-size="11">Lakewood</text>
+            
+            <!-- Thornton -->
+            <circle cx="420" cy="260" r="4" fill="#64748b"/>
+            <text x="445" y="255" text-anchor="start" fill="#64748b" font-size="11">Thornton</text>
+            
+            <!-- Westminster -->
+            <circle cx="400" cy="275" r="4" fill="#64748b"/>
+            <text x="350" y="275" text-anchor="end" fill="#64748b" font-size="11">Westminster</text>
+            
+            <!-- Arvada -->
+            <circle cx="390" cy="290" r="4" fill="#64748b"/>
+            <text x="360" y="295" text-anchor="end" fill="#64748b" font-size="11">Arvada</text>
+            
+            <!-- Centennial -->
+            <circle cx="440" cy="340" r="4" fill="#64748b"/>
+            <text x="460" y="355" text-anchor="start" fill="#64748b" font-size="11">Centennial</text>
+            
+            <!-- Highlands Ranch -->
+            <circle cx="430" cy="355" r="4" fill="#64748b"/>
+            <text x="450" y="375" text-anchor="start" fill="#64748b" font-size="11">Highlands Ranch</text>
+            
+            <!-- Littleton -->
+            <circle cx="415" cy="335" r="4" fill="#64748b"/>
+            <text x="380" y="350" text-anchor="end" fill="#64748b" font-size="11">Littleton</text>
+            
+            <!-- Legend -->
+            <rect x="580" y="380" width="180" height="90" fill="rgba(30, 41, 59, 0.95)" rx="8" stroke="#334155" stroke-width="1"/>
+            <text x="595" y="405" fill="white" font-size="14" font-weight="bold">Coverage Zones</text>
+            
+            <circle cx="600" cy="425" r="8" fill="rgba(59, 130, 246, 0.3)" stroke="#3b82f6" stroke-width="2"/>
+            <text x="620" y="430" fill="#cbd5e1" font-size="12">Same-Day Service</text>
+            
+            <circle cx="600" cy="450" r="8" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,2"/>
+            <text x="620" y="455" fill="#cbd5e1" font-size="12">Next-Day Service</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Coverage Details -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <!-- Primary Zone -->
+        <div class="bg-[#1e293b] p-8 rounded-xl border border-blue-500/30">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Same-Day Zone</h2>
+          </div>
+          
+          <p class="text-gray-400 mb-4">
+            Emergency response within <span class="text-blue-400 font-bold">2 hours</span>.
+            Standard service same day when booked by 2 PM.
+          </p>
+          
+          <ul class="space-y-2 text-gray-300">
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Denver
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Aurora
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Lakewood
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Arvada
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Westminster
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Thornton
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Centennial
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-blue-400">✓</span> Highlands Ranch
+            </li>
+          </ul>
+          
+          <div class="mt-6 pt-6 border-t border-gray-700">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-400">Service Fee</span>
+              <span class="text-2xl font-bold text-white">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Zone -->
+        <div class="bg-[#1e293b] p-8 rounded-xl border border-cyan-500/30">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
+              <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Next-Day Zone</h2>
+          </div>
+          
+          <p class="text-gray-400 mb-4">
+            Scheduled service within <span class="text-cyan-400 font-bold">24-48 hours</span>.
+            Perfect for non-urgent appointments and consultations.
+          </p>
+          
+          <ul class="space-y-2 text-gray-300">
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Boulder
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Broomfield
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Englewood
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Littleton
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Parker
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Castle Rock
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Golden
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-cyan-400">✓</span> Evergreen
+            </li>
+          </ul>
+          
+          <div class="mt-6 pt-6 border-t border-gray-700">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-400">Travel Fee</span>
+              <span class="text-2xl font-bold text-white">$25</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <p class="text-gray-400 mb-6">
+          Not sure if you're in our coverage area? Contact us for a free consultation.
+        </p>
+        <a href="/contact" 
+           class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:opacity-90 transition-opacity">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
