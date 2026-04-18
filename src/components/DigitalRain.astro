@@ -28,10 +28,58 @@
     let columns = Math.floor(canvas.width / fontSize);
     const drops = [];
     
+    // Splash particles array
+    const splashes = [];
+    
     // Rainbow color generator
     function getRainbowColor(position, time) {
       const hue = (position + time * 0.5) % 360;
       return `hsl(${hue}, 80%, 60%)`;
+    }
+    
+    // Splash particle class
+    class Splash {
+      constructor(x, y, hue) {
+        this.x = x;
+        this.y = y;
+        this.hue = hue;
+        this.particles = [];
+        this.life = 30; // frames
+        
+        // Create splash particles
+        for (let i = 0; i < 5; i++) {
+          this.particles.push({
+            x: x,
+            y: y,
+            vx: (Math.random() - 0.5) * 4,
+            vy: -Math.random() * 3 - 1,
+            size: Math.random() * 3 + 1
+          });
+        }
+      }
+      
+      update() {
+        this.life--;
+        for (let p of this.particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.15; // gravity
+        }
+      }
+      
+      draw(ctx) {
+        const alpha = this.life / 30;
+        ctx.fillStyle = `hsla(${this.hue}, 100%, 70%, ${alpha})`;
+        
+        for (let p of this.particles) {
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = `hsla(${this.hue}, 100%, 70%, ${alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
     }
     
     // Initialize drops at random heights
@@ -57,11 +105,21 @@
         time += 0.5;
       }
       
+      // Update and draw splashes
+      for (let i = splashes.length - 1; i >= 0; i--) {
+        splashes[i].update();
+        splashes[i].draw(ctx);
+        if (splashes[i].life <= 0) {
+          splashes.splice(i, 1);
+        }
+      }
+      
+      // Draw rain
       for (let i = 0; i < drops.length; i++) {
         // Random character
         const char = chars[Math.floor(Math.random() * chars.length)];
         
-        const x = i * fontSize;
+        const x = i * fontSize + fontSize / 2;
         const y = drops[i] * fontSize;
         
         if (y > 0 && y < canvas.height) {
@@ -79,14 +137,23 @@
           ctx.shadowBlur = 15;
           ctx.shadowColor = `hsla(${(i * 2 + time) % 360}, 100%, 70%, 0.8)`;
           
-          ctx.fillText(char, x, y);
+          ctx.fillText(char, x - fontSize / 2, y);
           
           // Reset shadow for next char
           ctx.shadowBlur = 0;
         }
         
-        // Slow movement - only update on frames divisible by 3
+        // Check if hit bottom
         if (shouldUpdate) {
+          const nextY = (drops[i] + 1) * fontSize;
+          
+          // Hit bottom - create splash
+          if (y > 0 && nextY >= canvas.height) {
+            const hue = (i * 2 + time) % 360;
+            splashes.push(new Splash(x, canvas.height - 5, hue));
+          }
+          
+          // Move drop
           drops[i]++;
           
           // Slow down even more randomly
