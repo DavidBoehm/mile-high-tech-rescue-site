@@ -1,0 +1,106 @@
+
+> mile-high-tech-rescue@1.0.0 dev
+> astro dev
+
+▶ Astro collects anonymous usage data.
+  This information helps us improve Astro.
+  Run "astro telemetry disable" to opt-out.
+  https://astro.build/telemetry
+
+19:14:53 [types] Generated 2ms
+19:14:53 [content] Syncing content
+19:14:53 [content] Synced content
+
+ astro  v5.18.1 ready in 656 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+19:14:53 watching for file changes...
+
+ update  ▶ New version of Astro available: 6.1.7
+  Run npx @astrojs/upgrade to update
+
+19:15:37 [200] / 155ms
+19:19:05 [watch] src/components/WhyUs.astro
+19:19:05 [watch] src/components/WhyUs.astro
+19:19:05 [200] / 39ms
+19:19:53 [watch] src/components/Hero.astro
+19:19:53 [watch] src/components/Hero.astro
+19:19:54 [200] / 31ms
+19:19:59 [watch] src/components/Testimonials.astro
+19:19:59 [watch] src/components/Testimonials.astro
+19:19:59 [200] / 33ms
+19:20:12 [watch] src/components/Testimonials.astro
+19:20:12 [watch] src/components/Testimonials.astro
+19:20:06 [200] / 28ms
+19:20:39 [200] / 23ms
+19:20:44 [200] / 3ms
+19:20:54 [200] / 5ms
+19:22:50 [watch] src/components/WhyUs.astro
+19:22:50 [watch] src/components/WhyUs.astro
+19:22:50 [200] / 29ms
+19:22:51 [200] / 8ms
+19:25:00 [watch] src/components/WhyUs.astro
+19:25:00 [watch] src/components/WhyUs.astro
+19:25:01 [200] / 35ms
+19:25:01 [200] / 4ms
+19:25:22 [watch] src/components/ContactCTA.astro
+19:25:22 [watch] src/components/ContactCTA.astro
+19:25:22 [200] / 21ms
+19:25:23 [200] / 3ms
+19:28:08 [watch] src/components/ContactCTA.astro
+19:28:08 [watch] src/components/ContactCTA.astro
+19:28:09 [200] / 27ms
+19:28:09 [200] / 4ms
+19:33:18 [watch] src/components/ContactCTA.astro
+19:33:18 [watch] src/components/ContactCTA.astro
+19:33:18 [200] / 27ms
+19:33:18 [200] / 6ms
+19:35:55 [watch] src/layouts/Layout.astro
+19:35:55 [watch] src/layouts/Layout.astro
+19:35:56 [200] / 35ms
+19:35:56 [200] / 3ms
+19:37:53 [watch] src/layouts/Layout.astro
+19:37:54 [200] / 34ms
+19:37:54 [200] / 5ms
+19:38:25 [200] / 3ms
+19:47:11 [200] / 5ms
+19:47:21 [watch] src/layouts/Layout.astro
+19:47:21 [200] / 36ms
+19:47:22 [200] / 2ms
+19:47:33 [200] / 2ms
+19:47:42 [200] / 3ms
+19:49:14 [watch] src/layouts/Layout.astro
+19:49:14 [200] / 19ms
+19:49:14 [200] / 2ms
+19:58:13 [watch] src/pages/index.astro
+19:58:13 [watch] src/pages/index.astro
+19:58:14 [200] / 74ms
+19:58:14 [200] / 4ms
+19:59:53 [200] / 2ms
+20:02:24 [watch] src/pages/index.astro
+20:02:24 [watch] src/pages/index.astro
+20:02:24 [watch] src/layouts/Layout.astro
+20:02:24 [200] / 31ms
+20:02:24 [200] / 5ms
+20:06:37 [200] /business 3ms
+20:11:44 [200] /business 2ms
+20:12:00 [200] /business 3ms
+20:12:07 [200] /business 2ms
+20:14:46 [200] /business 2ms
+20:14:53 [200] /business 3ms
+21:28:20 [200] /business 15ms
+21:32:37 [watch] src/layouts/Layout.astro
+21:32:38 [200] /business 39ms
+21:32:38 [200] /business 5ms
+21:33:03 [watch] src/components/Hero.astro
+21:33:03 [watch] src/components/Hero.astro
+21:33:04 [200] /business 24ms
+21:33:04 [200] /business 2ms
+21:33:17 [watch] src/pages/business.astro
+21:33:17 [watch] src/pages/business.astro
+21:33:17 [200] /business 27ms
+21:33:17 [200] /business 2ms
+21:34:06 [200] /business 4ms
+21:34:09 [200] / 2ms
