@@ -190,7 +190,7 @@ import Layout from '../layouts/Layout.astro';
     const currentHost = window.location.hostname;
     const apiBase = currentHost === 'localhost' || currentHost === '127.0.0.1' 
       ? 'http://localhost:8000' 
-      : 'https://api.milehightechrescue.com';
+      : 'https://field-tech-api.thedavidboehm.workers.dev';
 
     document.getElementById('bookingForm').addEventListener('submit', async (e) => {
       e.preventDefault();
