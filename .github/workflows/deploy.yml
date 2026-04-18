@@ -27,13 +27,11 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Deploy to Cloudflare Pages
-        id: deploy
-        uses: cloudflare/wrangler-action@v3
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=mile-high-tech-rescue --branch=${{ github.ref_name }}
-
-      - name: Print URL
-        run: echo "Deployed to ${{ steps.deploy.outputs.deployment-url }}"
+          projectName: mile-high-tech-rescue
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
