@@ -2,7 +2,7 @@
 ---
 
 <div class="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-  <canvas id="digitalRain" class="w-full h-full opacity-30"></canvas>
+  <canvas id="digitalRain" class="w-full h-full" style="filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));"></canvas>
 </div>
 
 <script is:inline>
@@ -20,73 +20,83 @@
     resize();
     window.addEventListener('resize', resize);
     
-    // Characters to use (mix of letters, numbers, and symbols)
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    // Characters to use
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン☆★♦♠♣♥';
     
     // Column setup
-    const fontSize = 14;
+    const fontSize = 16;
     let columns = Math.floor(canvas.width / fontSize);
     const drops = [];
     
-    // Initialize drops
-    for (let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -100; // Start at random heights above screen
+    // Rainbow color generator
+    function getRainbowColor(position, time) {
+      const hue = (position + time * 0.5) % 360;
+      return `hsl(${hue}, 80%, 60%)`;
     }
     
-    // Colors for variety
-    const colors = [
-      '#3b82f6', // Blue
-      '#06b6d4', // Cyan
-      '#8b5cf6', // Purple
-      '#10b981', // Green
-      '#06b6d4', // Cyan
-    ];
+    // Initialize drops at random heights
+    for (let i = 0; i < columns; i++) {
+      drops[i] = Math.random() * -200;
+    }
     
     let frameCount = 0;
+    let time = 0;
     
     function draw() {
-      // Semi-transparent black for trail effect
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
+      // Semi-transparent fade for trail effect
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      ctx.font = fontSize + 'px monospace';
+      ctx.font = 'bold ' + fontSize + 'px monospace';
       
-      // Only update every 2nd frame for slower effect
+      // Slow down - only update every 3rd frame
       frameCount++;
-      const shouldUpdate = frameCount % 2 === 0;
+      const shouldUpdate = frameCount % 3 === 0;
+      
+      if (shouldUpdate) {
+        time += 0.5;
+      }
       
       for (let i = 0; i < drops.length; i++) {
         // Random character
         const char = chars[Math.floor(Math.random() * chars.length)];
         
-        // Random color (brighter at head, dimmer trail)
-        const colorIndex = Math.floor(Math.random() * colors.length);
-        const color = colors[colorIndex];
-        
-        // Vary opacity based on position
-        const opacity = Math.random() > 0.8 ? '1' : '0.5';
-        ctx.fillStyle = color + Math.floor(opacity * 255).toString(16).padStart(2, '0');
-        ctx.fillStyle = color;
-        
-        // Draw character
         const x = i * fontSize;
         const y = drops[i] * fontSize;
         
         if (y > 0 && y < canvas.height) {
+          // Rainbow gradient based on column position and time
+          const gradient = ctx.createLinearGradient(x, y - 20, x, y);
+          const hue1 = (i * 2 + time) % 360;
+          const hue2 = (i * 2 + time + 30) % 360;
+          
+          gradient.addColorStop(0, `hsla(${hue1}, 100%, 70%, 0.3)`);
+          gradient.addColorStop(1, `hsla(${hue2}, 100%, 70%, 1)`);
+          
+          ctx.fillStyle = gradient;
+          
+          // Add glow effect
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = `hsla(${(i * 2 + time) % 360}, 100%, 70%, 0.8)`;
+          
           ctx.fillText(char, x, y);
+          
+          // Reset shadow for next char
+          ctx.shadowBlur = 0;
         }
         
-        // Move drop
+        // Slow movement - only update on frames divisible by 3
         if (shouldUpdate) {
           drops[i]++;
           
-          // Random speed variation
+          // Slow down even more randomly
           if (Math.random() > 0.95) {
-            drops[i]++; // Occasional speed boost
+            // Skip this update (character stays)
+            drops[i]--;
           }
           
           // Reset when off screen
-          if (y > canvas.height && Math.random() > 0.975) {
+          if (y > canvas.height && Math.random() > 0.985) {
             drops[i] = 0;
           }
         }
@@ -96,4 +106,5 @@
     }
     
     draw();
-  })();</script>
+  })();
+</script>
