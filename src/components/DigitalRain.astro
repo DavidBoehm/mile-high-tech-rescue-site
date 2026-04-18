@@ -1,14 +1,24 @@
 ---
 ---
 
-<div class="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-0 transition-opacity duration-1000" 
+     id="rainContainer"
+     aria-hidden="true">
   <canvas id="digitalRain" class="w-full h-full" style="filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));"></canvas>
+</div>
+
+<div id="easterEggHint" class="fixed bottom-4 right-4 text-xs text-gray-600/30 hover:text-gray-500/50 transition-colors cursor-default select-none z-50">
+  ?
 </div>
 
 <script is:inline>
   (function() {
+    const container = document.getElementById('rainContainer');
     const canvas = document.getElementById('digitalRain');
-    if (!canvas) return;
+    if (!canvas || !container) return;
+    
+    let isActive = false;
+    let animationId = null;
     
     const ctx = canvas.getContext('2d');
     
@@ -23,12 +33,12 @@
     // Characters to use
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン☆★♦♠♣♥';
     
-    // Column setup - double font size = half the columns
+    // Column setup
     const fontSize = 32;
     let columns = Math.floor(canvas.width / fontSize);
     const drops = [];
     
-    // Initialize drops at random heights
+    // Initialize drops
     for (let i = 0; i < columns; i++) {
       drops[i] = Math.random() * -200;
     }
@@ -37,13 +47,15 @@
     let time = 0;
     
     function draw() {
+      if (!isActive) return;
+      
       // Semi-transparent fade for trail effect
       ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       ctx.font = 'bold ' + fontSize + 'px monospace';
       
-      // Half speed - only update every 6th frame (was every 3rd)
+      // Update every 6th frame
       frameCount++;
       const shouldUpdate = frameCount % 6 === 0;
       
@@ -51,16 +63,14 @@
         time += 0.5;
       }
       
-      // Draw rain - fewer columns, larger characters
+      // Draw rain
       for (let i = 0; i < drops.length; i++) {
-        // Random character
         const char = chars[Math.floor(Math.random() * chars.length)];
         
         const x = i * fontSize + fontSize / 2;
         const y = drops[i] * fontSize;
         
         if (y > 0 && y < canvas.height) {
-          // Rainbow gradient based on column position and time
           const gradient = ctx.createLinearGradient(x, y - 30, x, y);
           const hue1 = (i * 2 + time) % 360;
           const hue2 = (i * 2 + time + 30) % 360;
@@ -69,31 +79,62 @@
           gradient.addColorStop(1, `hsla(${hue2}, 100%, 70%, 1)`);
           
           ctx.fillStyle = gradient;
-          
-          // Add glow effect
           ctx.shadowBlur = 20;
           ctx.shadowColor = `hsla(${(i * 2 + time) % 360}, 100%, 70%, 0.8)`;
           
           ctx.fillText(char, x - fontSize / 2, y);
-          
-          // Reset shadow for next char
           ctx.shadowBlur = 0;
         }
         
-        // Half speed movement
         if (shouldUpdate) {
           drops[i]++;
           
-          // Reset when off screen
           if (y > canvas.height && Math.random() > 0.97) {
             drops[i] = 0;
           }
         }
       }
       
-      requestAnimationFrame(draw);
+      animationId = requestAnimationFrame(draw);
     }
     
-    draw();
+    // Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          // Konami code complete!
+          isActive = !isActive;
+          container.classList.toggle('opacity-0', !isActive);
+          container.classList.toggle('opacity-100', isActive);
+          
+          if (isActive) {
+            draw();
+          } else {
+            cancelAnimationFrame(animationId);
+          }
+          
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+    
+    // Also toggle on triple-click of the hint
+    document.getElementById('easterEggHint').addEventListener('click', () => {
+      isActive = !isActive;
+      container.classList.toggle('opacity-0', !isActive);
+      container.classList.toggle('opacity-100', isActive);
+      
+      if (isActive) {
+        draw();
+      } else {
+        cancelAnimationFrame(animationId);
+      }
+    });
   })();
 </script>
