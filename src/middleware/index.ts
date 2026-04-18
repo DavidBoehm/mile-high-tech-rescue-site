@@ -1,8 +1,7 @@
----
 // Middleware to check for dev password
 const DEV_PASSWORD = import.meta.env.DEV_PASSWORD || 'dev-secret-123';
 
-export function onRequest({ request, redirect }, next) {
+export function onRequest({ request, redirect }: any, next: any) {
   // Only protect if DEV_PASSWORD is set
   if (!DEV_PASSWORD) {
     return next();
@@ -84,4 +83,3 @@ export function onRequest({ request, redirect }, next) {
     headers: { 'Content-Type': 'text/html' } 
   });
 }
----
