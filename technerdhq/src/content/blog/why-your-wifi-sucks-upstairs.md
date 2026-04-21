@@ -2,7 +2,6 @@
 title: "Why Your WiFi Sucks Upstairs (And How to Fix It)"
 description: "Dead zones, signal drops, and slow speeds upstairs? Here's why your WiFi struggles and the real-world fixes that work."
 pubDate: 'Apr 21 2026'
-heroImage: '/blog-placeholder-3.jpg'
 category: 'WiFi & Networking'
 ---
 

@@ -2,7 +2,6 @@
 title: "How to Fix a Printer That Won't Connect to WiFi"
 description: "Step-by-step fixes for printers that refuse to connect to your wireless network. Covers HP, Canon, Epson, and Brother."
 pubDate: 'Apr 23 2026'
-heroImage: '/blog-placeholder-4.jpg'
 category: 'Troubleshooting'
 ---
 

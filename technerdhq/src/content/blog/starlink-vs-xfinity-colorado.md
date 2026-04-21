@@ -2,7 +2,6 @@
 title: "Starlink vs Xfinity in Colorado: Which Is Better?"
 description: "Rural satellite internet or cable? We break down Starlink vs Xfinity for Colorado homes to help you choose the right connection."
 pubDate: 'Apr 22 2026'
-heroImage: '/blog-placeholder-2.jpg'
 category: 'Internet & Streaming'
 ---
 
