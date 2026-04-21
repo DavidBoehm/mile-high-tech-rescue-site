@@ -60,39 +60,46 @@ technerdhq/
 3. Write your content in Markdown
 4. Commit and push
 
+## Deployment (Cloudflare Pages)
+
+This blog is deployed as a **separate Cloudflare Pages project** with:
+
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+- **Root directory:** `/technerdhq`
+
+### Setup Steps:
+
+1. Go to Cloudflare Dashboard → Pages → Create a project
+2. Connect to GitHub repo: `DavidBoehm/mile-high-tech-rescue-site`
+3. Configure:
+   - **Project name:** `technerdhq`
+   - **Root directory:** `technerdhq`
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+4. Add custom domain: `technerdhq.milehightechrescue.com`
+
 ## Workflow
 
-This blog lives in the same repo as the main Mile High Tech Rescue site.
-
-### Development:
 ```bash
-# Edit in technerdhq/ directory
-cd /home/dboehm/.openclaw/workspace-marketing/mile-high-tech-rescue
+# Navigate to blog directory
+cd /home/dboehm/.openclaw/workspace-marketing/mile-high-tech-rescue/technerdhq
 
 # Work on dev branch
 git checkout dev
 
-# Make changes
+# Make changes, test locally
+npm run dev
+
+# Commit changes
 git add .
 git commit -m "Update blog: new post"
 git push origin dev
-```
 
-### Deployment:
-
-**Option 1: Separate Cloudflare Pages Project (Recommended)**
-1. Go to Cloudflare Dashboard → Pages
-2. Create project pointing to this repo
-3. Set build config:
-   - Build command: `cd technerdhq && npm run build`
-   - Output directory: `technerdhq/dist`
-4. Add custom domain: `technerdhq.milehightechrescue.com`
-
-**Option 2: Manual Deploy**
-```bash
-cd technerdhq
-npm run build
-# Upload dist/ folder to Cloudflare Pages
+# Merge to main for deployment
+git checkout main
+git merge dev
+git push origin main
 ```
 
 ## Existing Posts
@@ -107,14 +114,6 @@ npm run build
 - Modify `src/components/Header.astro` for navigation
 - Update `src/pages/index.astro` for homepage
 - Add styles to `src/styles/` directory
-
-## SEO
-
-Posts include:
-- Proper meta descriptions
-- Semantic HTML
-- Sitemap generation
-- RSS feed
 
 ## Links
 
