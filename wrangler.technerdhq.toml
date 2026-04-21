@@ -1,0 +1,16 @@
+name = "technerdhq"
+compatibility_date = "2024-04-01"
+
+[site]
+bucket = "./dist"
+
+# Cloudflare Pages settings
+[build]
+command = "npm run build"
+cwd = "technerdhq"
+
+[[env.production]]
+name = "technerdhq"
+
+[[env.dev]]
+name = "technerdhq-dev"

@@ -2,7 +2,7 @@
 import DigitalRain from './DigitalRain.astro';
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16" aria-label="Hero section">
+<section class="relative min-h-[85vh] flex flex-col justify-start overflow-hidden pt-32" aria-label="Hero section">
   <!-- Layer 1: Background base -->
   <div class="absolute inset-0 bg-gradient-to-br from-tech-dark via-tech-darker to-tech-dark"></div>
   
@@ -42,90 +42,103 @@ import DigitalRain from './DigitalRain.astro';
   </div>
   
   <!-- Layer 4: Content (above everything) -->
-  <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center space-x-2 bg-tech-card/50 border border-tech-accent/30 rounded-full px-4 py-2 mb-8">
-        <span class="w-2 h-2 bg-tech-cyan rounded-full animate-pulse"></span>
-        <span class="text-sm text-gray-300">Serving Denver Metro Area</span>
-      </div>
-      
-      <!-- Main Headline -->
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+      <!-- Main Headline - Senior Friendly: Large, Clear -->
+      <h1 class="text-4xl md:text-6xl font-bold tracking-normal mb-4">
         <span class="bg-gradient-to-r from-white via-tech-accent to-tech-cyan bg-clip-text text-transparent">
-          Denver's Smart Home &amp; IoT Experts
+          Smart Home Help Made Simple
         </span>
       </h1>
       
-      <!-- Subheadline -->
-      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-        Professional <strong class="text-white">smart home installation</strong> and <strong class="text-white">IoT integration services</strong> in Denver, Littleton, and Highlands Ranch. We handle setup, security, and automation so you don't have to.
+      <!-- Subheadline - Senior Friendly: Clear, jargon-free -->
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+        We set up your TVs, streaming, and smart devices. <strong class="text-white">No confusing tech talk.</strong> Just friendly help that works.
       </p>
       
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <!-- CTAs - Senior Friendly: Clear buttons with phone prominent -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
         <a href="tel:+12165432060" 
-           class="group relative px-8 py-4 bg-gradient-to-r from-tech-accent to-tech-cyan rounded-full font-semibold text-lg text-white shadow-lg shadow-tech-accent/25 hover:shadow-xl hover:shadow-tech-accent/40 transition-all"
+           class="group relative px-10 py-5 bg-gradient-to-r from-tech-accent to-tech-cyan rounded-xl font-bold text-xl text-white shadow-lg shadow-tech-accent/25 hover:shadow-xl hover:shadow-tech-accent/40 transition-all"
            aria-label="Call Mile High Tech Rescue">
-          Call (216) 543-2060
+          📞 Call (216) 543-2060
           <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
         </a>
         
         <a href="#services" 
-           class="px-8 py-4 border border-white/20 rounded-full font-semibold text-lg hover:bg-white/5 transition-all"
-           aria-label="View our smart home services">
-          Explore Services
+           class="px-10 py-5 border-2 border-white/30 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all"
+           aria-label="View our services">
+          See How We Help
         </a>
       </div>
       
-      <!-- Trust Indicators -->
-      <div class="flex flex-wrap items-center justify-center gap-8 text-gray-500">
-        <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5 text-tech-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+      <!-- Trust Indicators - Senior Friendly: Clear, large icons -->
+      <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400 mb-10">
+        <div class="flex items-center space-x-2 bg-white/5 px-4 py-2 rounded-full">
+          <svg class="w-6 h-6 text-tech-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
           </svg>
-          <span>Denver-Based Experts</span>
+          <span class="text-base">Locally Owned</span>
         </div>
         
-        <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5 text-tech-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <div class="flex items-center space-x-2 bg-white/5 px-4 py-2 rounded-full">
+          <svg class="w-6 h-6 text-tech-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
           </svg>
-          <span>Licensed &amp; Insured</span>
+          <span class="text-base">Licensed &amp; Insured</span>
         </div>
         
-        <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5 text-tech-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <div class="flex items-center space-x-2 bg-white/5 px-4 py-2 rounded-full">
+          <svg class="w-6 h-6 text-tech-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
           </svg>
-          <span>100% Satisfaction Guaranteed</span>
+          <span class="text-base">Patient &amp; Friendly</span>
         </div>
       </div>
       
-      <!-- Service Areas -->
-      <div class="mt-12 pt-8 border-t border-white/10">
-        <p class="text-sm text-gray-500 mb-4">Serving:</p>
-        <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-          <span>Denver</span>
-          <span>•</span>
-          <span>Littleton</span>
-          <span>•</span>
-          <span>Highlands Ranch</span>
-          <span>•</span>
-          <span>Centennial</span>
-          <span>•</span>
-          <span>Lone Tree</span>
-          <span>•</span>
-          <span>Castle Rock</span>
+      <!-- Service Areas - Simplified -->
+      <div class="mb-10">
+        <p class="text-base text-gray-400">Helping folks in: <span class="text-white">Denver • Littleton • Highlands Ranch • Centennial</span></p>
+      </div>
+      
+      <!-- Mini Services Section - Cable Cutting & Streaming Setup -->
+      <div class="mt-6 border-t border-white/10 pt-8">
+        <h2 class="text-2xl font-bold text-white mb-6">Popular Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <!-- Cable Cutting -->
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+            <div class="text-4xl mb-4">📺</div>
+            <h3 class="text-xl font-bold text-white mb-2">Cut the Cable</h3>
+            <p class="text-gray-400 text-base mb-4">Switch from expensive cable to streaming. We set up Roku, Fire TV, or Apple TV and show you how to use it.</p>
+            <ul class="text-left text-gray-400 text-sm space-y-1">
+              <li>✓ Netflix, Hulu, YouTube TV setup</li>
+              <li>✓ One remote that works everything</li>
+              <li>✓ Save $100+ per month</li>
+            </ul>
+          </div>
+          
+          <!-- Streaming Setup -->
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+            <div class="text-4xl mb-4">🎬</div>
+            <h3 class="text-xl font-bold text-white mb-2">Streaming Made Easy</h3>
+            <p class="text-gray-400 text-base mb-4">Watch what you want, when you want. We make sure your internet is fast enough and everything connects.</p>
+            <ul class="text-left text-gray-400 text-sm space-y-1">
+              <li>✓ Wi-Fi speed check &amp; fix</li>
+              <li>✓ Find shows across all apps</li>
+              <li>✓ Written instructions included</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-6">
+          <a href="/solutions" class="inline-flex items-center text-tech-cyan hover:text-white transition-colors text-lg">
+            See All Services 
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-    </svg>
   </div>
 </section>

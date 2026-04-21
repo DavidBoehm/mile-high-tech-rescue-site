@@ -1,49 +1,73 @@
-# Field Tech Backend - Quick Start
+# MileHighTechRescue - Quick Start
 
-## Running the API
+## Architecture
+
+- **Frontend:** Astro static site (deployed to Cloudflare Pages)
+- **Backend:** Cloudflare Workers
+- **Database:** Cloudflare D1 (SQLite-compatible edge database)
+- **Deployment:** GitHub → Cloudflare Pages (auto-deploy on push)
+
+## Development
 
 ```bash
-cd /home/dboehm/.openclaw/field-tech-backend
-./run.sh
+cd /home/dboehm/.openclaw/workspace-marketing/mile-high-tech-rescue
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
 ```
 
-## Access Points
+## URLs
 
-- **API Base:** http://localhost:8000
-- **Interactive Docs:** http://localhost:8000/docs
-- **Web Frontend:** http://localhost:8000/static/
+| Environment | URL |
+|-------------|-----|
+| Production | https://milehightechrescue.com |
+| Dev/Staging | https://dev.milehightechrescue.com |
 
-## Login Credentials
+## Environment Variables
 
-- **Technician:** `tech@milehightechrescue.com` / `tech123`
-- **Admin:** `admin@milehightechrescue.com` / `admin123`
+Create `.env` file:
+```bash
+# D1 Database binding (handled by wrangler)
+# Workers KV binding
+# Other secrets managed via Cloudflare dashboard or wrangler
+```
+
+## Deployment
+
+Deployments are automatic via GitHub Actions:
+- Push to `main` → Deploys to production
+- Push to `dev` → Deploys to staging
+
+## Database Access
+
+Use `wrangler` CLI to interact with D1:
+```bash
+# List databases
+wrangler d1 list
+
+# Execute query
+wrangler d1 execute DB_NAME --command="SELECT * FROM users"
+
+# Run migrations
+wrangler d1 migrations apply DB_NAME
+```
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/token` | Login (returns JWT) |
-| GET | `/users/me` | Get current user |
-| GET | `/jobs` | List jobs (techs see only theirs) |
-| POST | `/jobs` | Create new job |
-| PATCH | `/jobs/{id}` | Update job status |
-| GET | `/customers` | List customers |
-| POST | `/customers` | Create customer |
+Backend API is served via Cloudflare Workers:
+- `POST /api/auth/login` - User authentication
+- `GET /api/jobs` - List jobs
+- `POST /api/jobs` - Create job
+- `PATCH /api/jobs/:id` - Update job
 
-## Testing with curl
+## Tech Stack
 
-```bash
-# Login
-curl -X POST http://localhost:8000/token \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "username=tech@milehightechrescue.com&password=tech123"
-
-# Get jobs (replace TOKEN with the token from login)
-curl http://localhost:8000/jobs \
-  -H "Authorization: Bearer TOKEN"
-```
-
-## Database
-
-- SQLite file: `field_tech.db`
-- To reset: delete the file and run `python init_db.py` again
+- **Framework:** Astro
+- **Styling:** Tailwind CSS
+- **Backend:** Cloudflare Workers
+- **Database:** Cloudflare D1
+- **Auth:** JWT tokens (stored in KV)
+- **Deployment:** GitHub + Cloudflare Pages
