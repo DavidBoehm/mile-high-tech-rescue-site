@@ -1,0 +1,152 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<h1>TechNerdHQ</h1>
+				<p class="tagline">Practical tech tips for home networks, WiFi, smart homes, and troubleshooting.</p>
+				<p class="location">Serving Littleton, Colorado and beyond</p>
+			</section>
+
+			<section class="cta">
+				<h2>Need hands-on help?</h2>
+				<p>Sometimes DIY isn't enough. We provide in-home tech services for WiFi, smart home setup, and device troubleshooting.</p>
+				<p><a href="https://milehightechrescue.com/contact" class="button">Get Tech Help →</a></p>
+			</section>
+
+			<section class="recent-posts">
+				<h2>Recent Posts</h2>
+				<ul>
+					<li><a href="/blog/why-your-wifi-sucks-upstairs">Why Your WiFi Sucks Upstairs (And How to Fix It)</a></li>
+					<li><a href="/blog/starlink-vs-xfinity-colorado">Starlink vs Xfinity in Colorado: Which Is Better?</a></li>
+					<li><a href="/blog/fix-printer-wifi-connection">How to Fix a Printer That Won't Connect to WiFi</a></li>
+				</ul>
+				<p><a href="/blog">View all posts →</a></p>
+			</section>
+
+			<section class="categories">
+				<h2>Categories</h2>
+				<ul>
+					<li>WiFi & Networking</li>
+					<li>Smart Home</li>
+					<li>Internet & Streaming</li>
+					<li>Troubleshooting</li>
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		text-align: center;
+		padding: 3rem 1rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		border-radius: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.hero h1 {
+		font-size: 3rem;
+		margin: 0 0 1rem 0;
+	}
+
+	.tagline {
+		font-size: 1.25rem;
+		margin: 0 0 0.5rem 0;
+		opacity: 0.95;
+	}
+
+	.location {
+		margin: 0;
+		opacity: 0.8;
+		font-size: 0.95rem;
+	}
+
+	.cta {
+		background: #f8f9fa;
+		padding: 2rem;
+		border-radius: 1rem;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	.cta h2 {
+		margin-top: 0;
+	}
+
+	.button {
+		display: inline-block;
+		background: #667eea;
+		color: white;
+		padding: 0.75rem 1.5rem;
+		text-decoration: none;
+		border-radius: 0.5rem;
+		font-weight: 600;
+		margin-top: 1rem;
+	}
+
+	.button:hover {
+		background: #5568d3;
+	}
+
+	section {
+		margin-bottom: 2rem;
+	}
+
+	h2 {
+		color: #333;
+		border-bottom: 2px solid #667eea;
+		padding-bottom: 0.5rem;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	li {
+		padding: 0.5rem 0;
+		border-bottom: 1px solid #eee;
+	}
+
+	li:last-child {
+		border-bottom: none;
+	}
+
+	a {
+		color: #667eea;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	.categories ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.categories li {
+		background: #e9ecef;
+		padding: 0.5rem 1rem;
+		border-radius: 2rem;
+		border: none;
+		font-size: 0.9rem;
+	}
+</style>
