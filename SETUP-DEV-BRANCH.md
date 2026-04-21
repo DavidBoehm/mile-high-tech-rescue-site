@@ -4,6 +4,13 @@
 - `main` branch → Production (milehightechrescue.com)
 - `dev` branch → Staging (dev.milehightechrescue.com)
 
+## IMPORTANT: Build Platform
+
+**Cloudflare Pages handles ALL builds.**
+- **GitHub** = Source code hosting ONLY
+- **Cloudflare Pages** = Build + deploy platform
+- **NO GitHub Actions** - Cloudflare builds directly from git pushes
+
 ## Architecture
 
 - **Frontend:** Astro static site (Cloudflare Pages)
@@ -147,6 +154,6 @@ wrangler deploy
 
 ## Troubleshooting
 
+- **Build failures:** Check Cloudflare Pages build logs in Cloudflare dashboard
 - **Workers not updating:** Check `wrangler.toml` environment bindings
 - **D1 errors:** Verify database bindings in Cloudflare dashboard
-- **Build failures:** Check GitHub Actions logs
