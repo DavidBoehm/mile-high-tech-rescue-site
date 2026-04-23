@@ -7,6 +7,12 @@ tags: ["cybersecurity", "ransomware", "small business", "data protection"]
 featured: true
 ---
 
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
+
 # Ransomware 2025: What Small Businesses Need to Know
 
 Let's be real for a second: ransomware is terrifying. And if you're running a small business in Denver, you might be thinking, "Why would hackers target me? I'm not some Fortune 500 company."

@@ -6,6 +6,12 @@ author: "TechNerdHQ Team"
 tags: ["computer repair", "PC optimization", "Denver tech services", "slow computer", "computer maintenance"]
 ---
 
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
+
 # Is Your Computer Running Slow? 7 Fixes That Actually Work
 
 We've all been there. You're trying to get work done, binge your favorite show, or hop on a video call—and your computer decides to move at the pace of a sloth on vacation. If you're dealing with a **computer running slow**, you're not alone. The good news? Most slowdowns are totally fixable without buying a new machine.
@@ -51,7 +57,12 @@ Your computer needs breathing room. When your hard drive is over 85% full, every
 - **Delete large files** you don't need (old videos, duplicate photos)
 - **Use Disk Cleanup** (Windows) or **Optimize Storage** (Mac)
 
-**Running out of space?** Consider upgrading to an SSD or adding external storage. [Contact us](https://technerdhq.milehightechrescue.com) for hardware upgrade help in Denver!
+**Running out of space?** **Running out of space?** Consider these storage solutions:
+- [Samsung 870 EVO 1TB SSD](https://www.amazon.com/dp/B08QBJ2YMG?tag=technerdhq-20) - The #1 way to speed up any computer
+- [WD 2TB External Hard Drive](https://www.amazon.com/dp/B07XQ8FX5L?tag=technerdhq-20) - Perfect for backups and file storage
+- [Samsung T7 Portable SSD 1TB](https://www.amazon.com/dp/B0874YJP92?tag=technerdhq-20) - Fast external storage
+
+[Contact us](https://technerdhq.milehightechrescue.com) for hardware upgrade help in Denver!
 
 ---
 
@@ -67,6 +78,9 @@ Malware doesn't always announce itself with pop-ups. Sometimes it just sits ther
 2. Consider a second-opinion scan with [Malwarebytes](https://www.malwarebytes.com) (free version works great)
 3. Remove any suspicious browser extensions
 4. Check for unfamiliar programs in your installed apps list
+
+**Recommended Security Tools:**
+- [Malwarebytes Premium](https://www.amazon.com/dp/B07Z9HJ2N1?tag=technerdhq-20) - Advanced malware protection
 
 > **Warning:** If your browser's homepage changed or you're seeing weird ads, you might have adware. We can clean that up for you—[schedule a malware removal](https://technerdhq.milehightechrescue.com).
 
@@ -102,6 +116,10 @@ If your computer is still sluggish after cleanup, you might be hitting a memory 
 
 **RAM upgrades** are one of the most cost-effective ways to breathe new life into an older machine. [TechNerdHQ can help](https://technerdhq.milehightechrescue.com)—we handle RAM upgrades for laptops and desktops across the Denver area.
 
+**Recommended RAM Upgrades:**
+- [Crucial 16GB DDR4 RAM Kit](https://www.amazon.com/dp/B07ZLC7VQY?tag=technerdhq-20) - The sweet spot for most computers
+- [Crucial 32GB DDR4 RAM Kit](https://www.amazon.com/dp/B08C4X9VRZ?tag=technerdhq-20) - For power users and content creators
+
 ---
 
 ## 6. Switch to an SSD (Solid State Drive)
@@ -109,6 +127,11 @@ If your computer is still sluggish after cleanup, you might be hitting a memory 
 ### The Single Best Upgrade
 
 If your computer still has a traditional spinning hard drive (HDD), upgrading to a Solid State Drive (SSD) is like switching from a bicycle to a sports car. It's the #1 recommendation we give to anyone asking how to **speed up computer** performance.
+
+**Best SSD Upgrades:**
+- [Samsung 870 EVO 500GB SSD](https://www.amazon.com/dp/B08QBJ2YMG?tag=technerdhq-20) - Best overall value
+- [Crucial MX500 1TB SSD](https://www.amazon.com/dp/B0784SLQM6?tag=technerdhq-20) - Reliable and fast
+- [Samsung 980 NVMe SSD 1TB](https://www.amazon.com/dp/B08V7GT6F3?tag=technerdhq-20) - For NVMe-compatible systems (ultra-fast)
 
 ### SSD Benefits
 
@@ -118,6 +141,8 @@ If your computer still has a traditional spinning hard drive (HDD), upgrading to
 - **Overall responsiveness:** Night and day difference
 
 > **DIY or Pro?** SSD installation is doable for tech-savvy folks, but cloning your existing drive requires care. We'd rather you [bring it to us](https://technerdhq.milehightechrescue.com) than risk losing your data.
+>
+> **Need cloning equipment?** [SATA to USB Cable](https://www.amazon.com/dp/B00ZJ5TSU8?tag=technerdhq-20) - For transferring data to your new SSD
 
 ---
 

@@ -7,6 +7,12 @@ tags: ["cybersecurity", "AI scams", "phishing", "small business", "Denver IT"]
 image: "/images/blog/ai-phishing.jpg"
 ---
 
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
+
 # AI-Powered Phishing: How Scammers Are Using ChatGPT (and How to Spot It)
 
 Look, we all thought AI was going to make our lives easier. And it has! But here's the thing: scammers read the news too. They've caught on that tools like ChatGPT can write convincing emails, create fake websites, and basically make their shady operations way more sophisticated. **AI phishing scams** are no longer science fiction—they're happening right now to businesses just like yours.

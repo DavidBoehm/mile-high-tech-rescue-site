@@ -20,8 +20,8 @@ import HeaderLink from './HeaderLink.astro';
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		background: rgb(var(--surface));
+		box-shadow: 0 2px 8px rgba(0,0,0, 5%);
 	}
 	h2 {
 		margin: 0;
@@ -42,7 +42,7 @@ import HeaderLink from './HeaderLink.astro';
 		display: flex;
 	}
 	.external-links a {
-		background: #667eea;
+		background: rgb(var(--accent));
 		color: white !important;
 		padding: 0.5em 1em;
 		border-radius: 4px;
@@ -52,11 +52,11 @@ import HeaderLink from './HeaderLink.astro';
 		text-decoration: none;
 	}
 	.external-links a:hover {
-		background: #5568d3;
+		background: rgb(var(--accent-dark));
 	}
 	nav a {
 		padding: 1em 0.5em;
-		color: var(--black);
+		color: rgb(var(--text-primary));
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 	}

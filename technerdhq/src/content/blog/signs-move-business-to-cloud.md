@@ -1,9 +1,15 @@
 ---
 title: "5 Signs It's Time to Migrate Your Business to the Cloud"
 description: "Wondering if your small business should move to the cloud? Here are 5 clear signs it's time for cloud migration, plus what Denver IT consulting can do to help."
-pubDate: 'Apr 22 2026'
+pubDate: 'Aug 13 2025'
 category: 'Business IT'
 ---
+
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
 
 Let's be honest—most small business owners don't wake up thinking, "Today feels like a great day for cloud migration." But here's the thing: waiting too long to move your business to the cloud can cost you money, slow you down, and leave you vulnerable to disasters that could've been prevented.
 

@@ -7,6 +7,12 @@ tags: ["Microsoft 365", "Google Workspace", "business email", "productivity suit
 image: "/images/blog/office-productivity-suite.jpg"
 ---
 
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
+
 # Microsoft 365 vs Google Workspace: Which is Right for Your Business in 2025?
 
 So, your business needs a **business productivity suite** and you're stuck deciding between the two giants: **Microsoft 365 vs Google Workspace** (formerly G Suite). We get it — it's a big decision that'll affect how your team works every single day.

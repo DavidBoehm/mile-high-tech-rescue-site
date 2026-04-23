@@ -7,6 +7,12 @@ image: "/blog/321-backup-strategy.jpg"
 tags: ["backup", "data protection", "small business", "business continuity", "Denver IT services"]
 ---
 
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
+
 Let's be real for a second—when's the last time you actually thought about your business backups? If you're like most small business owners we talk to at [TechNerdHQ](https://technerdhq.milehightechrescue.com), the answer is probably "uh... hopefully they're working?"
 
 Here's the thing: data loss doesn't care if you're busy. It doesn't care if you just landed a big client or if it's your slow season. When it hits, it hits hard. And in 2025, with ransomware attacks getting nastier and cloud outages still being a thing, having a rock-solid **small business backup strategy** isn't optional anymore—it's survival.
@@ -60,6 +66,11 @@ Copy #3 goes offsite. Cloud backup services are perfect for this. Set it, forget
 This is your insurance policy against specific failure modes. If your computer dies, your external drive might still work. If your office floods, your cloud backup is safe. If ransomware hits your network drive, your offline backup might be untouched.
 
 Mix it up. Don't put all your eggs in one basket made of the same material.
+
+**Recommended Backup Hardware:**
+- [WD 5TB Elements Portable Hard Drive](https://www.amazon.com/dp/B07X4P4P8C?tag=technerdhq-20) - Reliable local backup
+- [Samsung T7 Portable SSD 2TB](https://www.amazon.com/dp/B0874YJP92?tag=technerdhq-20) - Fast portable storage for critical data
+- [Synology 2-Bay NAS DiskStation](https://www.amazon.com/dp/B08VLW3WGX?tag=technerdhq-20) - Network-attached storage for automated backups
 
 ### The "1 Offsite Copy" Part
 

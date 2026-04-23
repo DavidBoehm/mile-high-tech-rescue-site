@@ -53,6 +53,11 @@ Of course, this is just a starting point. Let's look at the full picture.
 - Battery replacements on laptops
 - Software issues and malware cleanup
 
+**Recommended Repair/Upgrade Components:**
+- [Samsung 870 EVO 1TB SSD](https://www.amazon.com/dp/B08QBJ2YMG?tag=technerdhq-20) - $110 - Best SSD upgrade
+- [Crucial 16GB DDR4 RAM Kit](https://www.amazon.com/dp/B07ZLC7VQY?tag=technerdhq-20) - $50 - Most popular RAM upgrade
+- [Laptop Battery Replacement Kits](https://www.amazon.com/dp/B08D6TNW5T?tag=technerdhq-20) - $30-80 - Extend laptop life
+
 **Red flags (usually replace):**
 - Motherboard failures
 - Multiple component failures
@@ -126,6 +131,11 @@ Sometimes the decision is obvious. Replace immediately if:
 Sometimes the best answer isn't repair *or* replace—it's upgrade.
 
 **The RAM and SSD special:** For many 3-4 year old machines, dropping in more RAM and swapping the hard drive for an SSD can give them 2-3 more years of useful life for under $200.
+
+**Recommended Upgrade Combinations:**
+- SSD + RAM Bundle: [Samsung 870 EVO 500GB](https://www.amazon.com/dp/B08QBJ2YMG?tag=technerdhq-20) + [Crucial 16GB RAM](https://www.amazon.com/dp/B07ZLC7VQY?tag=technerdhq-20) - ~$150 total
+- Laptop Battery + SSD: Extend portable life significantly
+- Tools for DIY: [iFixit Pro Tech Toolkit](https://www.amazon.com/dp/B07XZMJXVR?tag=technerdhq-20) - $75 - Professional repair tools
 
 **Refurbished business machines:** You can often get 1-2 year old enterprise-grade computers for 40-60% off retail. They're built better than new consumer models and still have years of life.
 

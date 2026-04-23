@@ -14,60 +14,109 @@ const posts = (await getCollection('blog')).sort(
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
 				width: 100%;
-				margin-bottom: 1rem;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem;
+				box-sizing: border-box;
+			}
+
+			.blog-header {
 				text-align: center;
+				padding: 3rem 0;
+				margin-bottom: 2rem;
 			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
+
+			.blog-header h1 {
+				font-size: clamp(2rem, 5vw, 3rem);
+				font-weight: 800;
+				margin: 0 0 0.5rem 0;
+				color: rgb(var(--text-primary));
 			}
-			.title {
+
+			.blog-header p {
+				color: rgb(var(--text-secondary));
+				font-size: 1.1rem;
 				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
 			}
-			.date {
+
+			.posts-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+				gap: 1.5rem;
+				list-style: none;
+				padding: 0;
 				margin: 0;
-				color: rgb(var(--gray));
 			}
-			ul li a:hover h4,
-			ul li a:hover .date {
+
+			.post-card {
+				background: rgb(var(--surface-elevated));
+				border: 1px solid rgb(var(--border));
+				border-radius: var(--radius);
+				padding: 1.5rem;
+				transition: all 0.2s ease;
+			}
+
+			.post-card:hover {
+				box-shadow: var(--shadow-md);
+				transform: translateY(-2px);
+			}
+
+			.post-card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+
+			.post-title {
+				font-size: 1.15rem;
+				font-weight: 600;
+				color: rgb(var(--text-primary));
+				margin: 0 0 0.5rem 0;
+				line-height: 1.4;
+			}
+
+			.post-date {
+				font-size: 0.875rem;
+				color: rgb(var(--text-secondary));
+				margin: 0;
+			}
+
+			.post-card:hover .post-title {
 				color: rgb(var(--accent));
 			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
+
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				margin-top: 2rem;
+				padding: 0.75rem 1.5rem;
+				background: rgb(var(--accent)) !important;
+				color: white !important;
+				border-radius: var(--radius);
+				font-weight: 600;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			.back-link:hover {
+				background: rgb(var(--accent-dark));
+				transform: translateY(-1px);
+			}
+
+			@media (max-width: 768px) {
+				main {
+					padding: 1rem;
 				}
-				ul li {
-					width: 100%;
-					text-align: center;
+				.blog-header {
+					padding: 2rem 0;
 				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
+				.posts-grid {
+					grid-template-columns: 1fr;
 				}
 			}
 		</style>
@@ -75,22 +124,28 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+			<header class="blog-header">
+				<h1>All Posts</h1>
+				<p>{posts.length} articles on WiFi, smart home, and tech troubleshooting</p>
+			</header>
+			
+			<ul class="posts-grid">
+				{
+					posts.map((post) => (
+						<li class="post-card">
+							<a href={`/blog/${post.id}/`}>
+								<h4 class="post-title">{post.data.title}</h4>
+								<p class="post-date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<div style="text-align: center;">
+				<a href="/" class="back-link">← Back to Home</a>
+			</div>
 		</main>
 		<Footer />
 	</body>

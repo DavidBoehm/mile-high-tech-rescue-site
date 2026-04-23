@@ -6,6 +6,12 @@ author: "TechNerdHQ"
 tags: ["cybersecurity", "email security", "small business", "phishing", "Denver IT services"]
 ---
 
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
+
 # Email Security for Small Business: Beyond the Spam Folder
 
 Let's be honest—when you think about email security, you probably picture that annoying spam folder filled with questionable offers from foreign princes and miracle weight loss pills. But here's the thing: **email is the #1 way cybercriminals target small businesses**, and it's way more sophisticated than you might think.

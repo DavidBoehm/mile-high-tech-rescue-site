@@ -1,9 +1,15 @@
 ---
 title: "Why Your WiFi Sucks Upstairs (And How to Fix It)"
 description: "Dead zones, signal drops, and slow speeds upstairs? Here's why your WiFi struggles and the real-world fixes that work."
-pubDate: 'Apr 21 2026'
+pubDate: 'Jun 4 2025'
 category: 'WiFi & Networking'
 ---
+
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+
+<AffiliateDisclosure />
+
+> **Affiliate Disclosure:** This post contains affiliate links. As an Amazon Associate, I earn from qualifying purchases at no extra cost to you.
 
 We've all been there. You're downstairs enjoying blazing-fast internet, but the moment you head upstairs, your phone struggles to load a simple webpage. Videos buffer. Video calls drop. Your WiFi just... stops working.
 
@@ -46,6 +52,12 @@ If your router is 5+ years old, it might be time. Look for WiFi 6 (802.11ax) sup
 **Start with router placement**—it's free and often solves 50% of the problem.
 
 **If that doesn't cut it, get a mesh system.** Eero or TP-Link Deco will cover 90% of homes beautifully. Place the main unit centrally, one satellite upstairs, and you're golden.
+
+**Recommended WiFi Solutions:**
+- [TP-Link Deco Mesh WiFi 6 (3-Pack)](https://www.amazon.com/dp/B08DHLCLCY?tag=technerdhq-20) - $180 - Best value mesh system
+- [Amazon Eero 6+ Mesh WiFi System](https://www.amazon.com/dp/B08Z8GJ8GC?tag=technerdhq-20) - $200 - Super easy setup
+- [Netgear Orbi WiFi 6 System](https://www.amazon.com/dp/B07YX5NDVS?tag=technerdhq-20) - $350 - Premium coverage
+- [ASUS AX1800 WiFi 6 Router](https://www.amazon.com/dp/B08N147PR9?tag=technerdhq-20) - $130 - Great single-router upgrade
 
 ## When to Call for Help
 
