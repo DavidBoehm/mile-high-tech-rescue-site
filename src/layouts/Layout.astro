@@ -54,6 +54,10 @@ const canonicalUrl = Astro.url.pathname;
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={`https://milehightechrescue.com${image}`} />
   
+  <!-- Google AdSense Auto Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-PLACEHOLDER_ID"
+       crossorigin="anonymous"></script>
+  
   <!-- Local Business Structured Data -->
   <script type="application/ld+json">
     {`
@@ -310,8 +314,8 @@ const canonicalUrl = Astro.url.pathname;
         </p>
         
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy Policy</a>
-          <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Terms of Service</a>
+          <a href="/privacy" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy Policy</a>
+          <a href="/terms" class="text-gray-500 hover:text-white transition-colors text-sm">Terms of Service</a>
           <a href="/sitemap-index.xml" class="text-gray-500 hover:text-white transition-colors text-sm">Sitemap</a>
         </div>
       </div>
