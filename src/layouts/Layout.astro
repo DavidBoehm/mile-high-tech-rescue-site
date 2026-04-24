@@ -1,5 +1,6 @@
 ---
 import TechParticles from '../components/TechParticles.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -366,6 +367,8 @@ const canonicalUrl = Astro.url.pathname;
       }, { passive: true });
     })();
   </script>
+
+<CookieConsent />
 
 </body>
 </html>
