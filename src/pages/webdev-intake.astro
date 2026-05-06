@@ -331,6 +331,10 @@ import Layout from '../layouts/Layout.astro';
       const file = e.target.files[0];
       if (!file) return;
 
+      // Get business name for folder organization
+      const businessName = document.querySelector('input[name="business_name"]')?.value?.trim() || 'unnamed-business';
+      const sanitizedName = businessName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+
       logoFileName.textContent = file.name;
       logoUploadStatus.classList.remove('hidden');
       logoUploadStatus.innerHTML = '<span class="text-cyan-400 text-sm">Uploading...</span>';
@@ -338,6 +342,8 @@ import Layout from '../layouts/Layout.astro';
       try {
         const formData = new FormData();
         formData.append('file', file);
+        formData.append('folder', sanitizedName);
+        formData.append('type', 'logo');
 
         const response = await fetch(UPLOAD_URL, {
           method: 'POST',
@@ -348,7 +354,7 @@ import Layout from '../layouts/Layout.astro';
 
         if (result.success) {
           logoUrlInput.value = result.url;
-          logoUploadStatus.innerHTML = '<span class="text-green-400 text-sm">✓ Uploaded successfully</span>';
+          logoUploadStatus.innerHTML = '<span class="text-green-400 text-sm">✓ Uploaded to ' + sanitizedName + '/ folder</span>';
         } else {
           throw new Error(result.error || 'Upload failed');
         }
@@ -368,6 +374,10 @@ import Layout from '../layouts/Layout.astro';
       const files = Array.from(e.target.files);
       if (files.length === 0) return;
 
+      // Get business name for folder organization
+      const businessName = document.querySelector('input[name="business_name"]')?.value?.trim() || 'unnamed-business';
+      const sanitizedName = businessName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+
       photosFileName.textContent = `${files.length} file(s) selected`;
       photosUploadStatus.classList.remove('hidden');
       photosUploadStatus.innerHTML = '<span class="text-cyan-400 text-sm">Uploading...</span>';
@@ -378,6 +388,8 @@ import Layout from '../layouts/Layout.astro';
         for (const file of files) {
           const formData = new FormData();
           formData.append('file', file);
+          formData.append('folder', sanitizedName);
+          formData.append('type', 'photos');
 
           const response = await fetch(UPLOAD_URL, {
             method: 'POST',
@@ -394,7 +406,7 @@ import Layout from '../layouts/Layout.astro';
         }
         
         photosUrlsInput.value = uploadedUrls.join(',');
-        photosUploadStatus.innerHTML = '<span class="text-green-400 text-sm">✓ Uploaded successfully</span>';
+        photosUploadStatus.innerHTML = '<span class="text-green-400 text-sm">✓ Uploaded to ' + sanitizedName + '/ folder</span>';
       } catch (err) {
         photosUploadStatus.innerHTML = '<span class="text-red-400 text-sm">✗ Upload failed. Please try again.</span>';
         console.error('Upload error:', err);
