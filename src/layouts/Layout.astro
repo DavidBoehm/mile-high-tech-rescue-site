@@ -1,5 +1,6 @@
 ---
 import TechParticles from '../components/TechParticles.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -19,6 +20,19 @@ const canonicalUrl = Astro.url.pathname;
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+  <!-- Google AdSense Verification -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9999690081619988"
+       crossorigin="anonymous"></script>
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-524HXHJ0SM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-524HXHJ0SM');
+  </script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
@@ -310,8 +324,8 @@ const canonicalUrl = Astro.url.pathname;
         </p>
         
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy Policy</a>
-          <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Terms of Service</a>
+          <a href="/privacy" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy Policy</a>
+          <a href="/terms" class="text-gray-500 hover:text-white transition-colors text-sm">Terms of Service</a>
           <a href="/sitemap-index.xml" class="text-gray-500 hover:text-white transition-colors text-sm">Sitemap</a>
         </div>
       </div>
@@ -353,6 +367,8 @@ const canonicalUrl = Astro.url.pathname;
       }, { passive: true });
     })();
   </script>
+
+<CookieConsent />
 
 </body>
 </html>

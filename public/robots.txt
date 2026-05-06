@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Google AdSense Crawler
+User-agent: Mediapartners-Google
+Allow: /
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Googlebot Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Sitemap location
+Sitemap: https://milehightechrescue.com/sitemap-index.xml

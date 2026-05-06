@@ -1,0 +1,81 @@
+{
+  "autoUpdate": true,
+  "autoUpdateNotification": true,
+  "useQuickCss": true,
+  "themeLinks": [],
+  "eagerPatches": false,
+  "enabledThemes": [
+    "MyVision.css"
+  ],
+  "enableReactDevtools": false,
+  "frameless": false,
+  "transparent": false,
+  "winCtrlQ": false,
+  "disableMinSize": true,
+  "winNativeTitleBar": false,
+  "plugins": {
+    "CommandsAPI": { "enabled": true },
+    "MessageAccessoriesAPI": { "enabled": true },
+    "MessageEventsAPI": { "enabled": true },
+    "UserSettingsAPI": { "enabled": true },
+    "BetterFolders": {
+      "enabled": true,
+      "sidebar": true,
+      "showFolderIcon": 1,
+      "keepIcons": false,
+      "closeAllHomeButton": false,
+      "closeAllFolders": false,
+      "forceOpen": false,
+      "sidebarAnim": true
+    },
+    "BetterSettings": {
+      "enabled": true,
+      "disableFade": true,
+      "eagerLoad": true,
+      "organizeMenu": true
+    },
+    "CrashHandler": { "enabled": true },
+    "FakeNitro": {
+      "enabled": true,
+      "enableStickerBypass": true,
+      "enableStreamQualityBypass": true,
+      "enableEmojiBypass": true,
+      "transformEmojis": true,
+      "transformStickers": true,
+      "transformCompoundSentence": false
+    },
+    "FixCodeblockGap": { "enabled": true },
+    "ImageLink": { "enabled": true },
+    "IrcColors": { "enabled": true },
+    "ServerListAPI": { "enabled": true },
+    "ShikiCodeblocks": { "enabled": true },
+    "ShowHiddenThings": { "enabled": true },
+    "ThemeAttributes": { "enabled": true },
+    "BadgeAPI": { "enabled": true },
+    "NoTrack": {
+      "enabled": true,
+      "disableAnalytics": true
+    },
+    "Settings": {
+      "enabled": true,
+      "settingsLocation": "aboveNitro"
+    },
+    "SupportHelper": { "enabled": true }
+  },
+  "uiElements": {
+    "chatBarButtons": {},
+    "messagePopoverButtons": {}
+  },
+  "notifications": {
+    "timeout": 5000,
+    "position": "bottom-right",
+    "useNative": "not-focused",
+    "logLimit": 50
+  },
+  "cloud": {
+    "authenticated": false,
+    "url": "https://api.vencord.dev/",
+    "settingsSync": false,
+    "settingsSyncVersion": 1776872912323
+  }
+}
