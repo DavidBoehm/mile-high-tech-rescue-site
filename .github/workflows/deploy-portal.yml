@@ -1,36 +1,24 @@
-name: Deploy to Cloudflare Pages
+name: Deploy Field Tech Portal
 
 on:
   push:
-    branches: [main, master]
-  pull_request:
+    paths:
+      - 'field-tech-portal/static/**'
     branches: [main, master]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build site
-        run: npm run build
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          projectName: mile-high-tech-rescue
-          directory: ./dist
+          projectName: field-tech-portal
+          directory: ./field-tech-portal/static
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
