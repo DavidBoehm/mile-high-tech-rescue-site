@@ -1,0 +1,396 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Cable Cutting Services";
+const description = "Professional cord cutting service in Denver. Save $600-$1,200/year with antenna installation and streaming setup. Free consultation.";
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-slate-950">
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 overflow-hidden">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-500/20 via-transparent to-transparent"></div>
+      </div>
+      <div class="container mx-auto px-4 relative text-center">
+        <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-4 py-2 mb-6">
+          <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+          <span class="text-cyan-400 text-sm font-medium">Save Money on TV</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-white">
+          Cut Your Cable Bill in Half
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-400 mb-4">
+          Professional cord cutting setup in Denver metro
+        </p>
+        <p class="text-lg text-cyan-400 mb-10">
+          Save $600-$1,200/year • Local experts • Same-week service
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#contact" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg shadow-cyan-500/25">
+            Book Free Consultation
+          </a>
+          <a href="#calculator" class="border-2 border-slate-600 text-slate-300 px-8 py-4 rounded-xl font-bold text-lg hover:border-cyan-500 hover:text-white transition">
+            Calculate Your Savings
+          </a>
+        </div>
+        <div class="mt-12 flex flex-wrap justify-center gap-10">
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-extrabold text-white">500+</div>
+            <div class="text-slate-400">Happy Customers</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-extrabold text-white">$1M+</div>
+            <div class="text-slate-400">Total Saved</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-extrabold text-white">4.9★</div>
+            <div class="text-slate-400">Google Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-center text-3xl md:text-4xl font-bold mb-4 text-white">Tired of Paying Too Much for TV?</h2>
+        <p class="text-center text-lg text-slate-400 max-w-2xl mx-auto mb-16">
+          The average Denver household pays $180/month for cable. We help you keep the channels you love for under $50.
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/10 transition">
+            <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-5 text-2xl">📺</div>
+            <h3 class="text-xl font-bold mb-3 text-white">HD Antenna Installation</h3>
+            <p class="text-slate-400">Get 60+ local channels free forever. ABC, CBS, NBC, FOX, PBS, and more with crystal-clear reception.</p>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 transition">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-5 text-2xl">📱</div>
+            <h3 class="text-xl font-bold mb-3 text-white">Streaming Setup</h3>
+            <p class="text-slate-400">Netflix, Hulu, YouTube TV installed and configured. We help you choose the best services for your viewing habits.</p>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10 transition">
+            <div class="w-14 h-14 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-5 text-2xl">💰</div>
+            <h3 class="text-xl font-bold mb-3 text-white">Save $600-1,200/Year</h3>
+            <p class="text-slate-400">Most customers cut their TV bill by 60-70% while keeping all the shows and sports they watch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 bg-slate-900/50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-center text-3xl md:text-4xl font-bold mb-12 text-white">Our Services</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6 items-start">
+          <!-- Free Consultation -->
+          <div class="bg-slate-900 border-2 border-slate-700 rounded-2xl p-8 text-center hover:border-slate-500 transition">
+            <h3 class="text-xl font-bold mb-2 text-white">Free Consultation</h3>
+            <div class="text-4xl font-extrabold text-cyan-400 my-4">FREE</div>
+            <ul class="text-left text-slate-400 mb-6 space-y-2 text-sm">
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> 30-minute in-home assessment</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> Personalized cord-cutting plan</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> Streaming recommendations</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> No obligation</li>
+            </ul>
+            <a href="#contact" class="block bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 transition">Book Now</a>
+          </div>
+          
+          <!-- Complete Package -->
+          <div class="bg-slate-900 border-2 border-cyan-500 rounded-2xl p-8 text-center relative scale-105 shadow-2xl shadow-cyan-500/20">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+              Most Popular
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-white">Complete Package</h3>
+            <div class="text-4xl font-extrabold text-cyan-400 my-4">$349</div>
+            <ul class="text-left text-slate-400 mb-6 space-y-2 text-sm">
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> HD antenna installation</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> Streaming device setup</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> All apps configured</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> User training included</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> 90-day support</li>
+            </ul>
+            <a href="#contact" class="block bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-700 transition">Book Now</a>
+          </div>
+          
+          <!-- Ongoing Support -->
+          <div class="bg-slate-900 border-2 border-slate-700 rounded-2xl p-8 text-center hover:border-slate-500 transition">
+            <h3 class="text-xl font-bold mb-2 text-white">Ongoing Support</h3>
+            <div class="text-4xl font-extrabold text-cyan-400 my-4">$29<span class="text-lg text-slate-500 font-normal">/mo</span></div>
+            <ul class="text-left text-slate-400 mb-6 space-y-2 text-sm">
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> Phone & text support</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> Troubleshooting help</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> Service changes</li>
+              <li class="flex items-start gap-2"><span class="text-cyan-400">✓</span> Priority scheduling</li>
+            </ul>
+            <a href="#contact" class="block bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 transition">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Savings Calculator -->
+    <section id="calculator" class="py-20">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-center text-3xl md:text-4xl font-bold mb-4 text-white">Calculate Your Savings</h2>
+        <p class="text-center text-slate-400 mb-10">See how much you could save by cutting cable</p>
+        
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+          <div class="mb-8">
+            <label class="block mb-3 font-semibold text-white">Current Monthly Cable Bill</label>
+            <input type="range" id="cableBill" min="50" max="300" value="180" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500" oninput="updateSavings()">
+            <div class="flex justify-between text-slate-500 text-sm mt-2">
+              <span>$50</span>
+              <span id="cableValue" class="text-xl font-bold text-cyan-400">$180</span>
+              <span>$300</span>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="p-4 bg-slate-800 rounded-xl">
+              <div class="text-xs text-slate-400 mb-1">Current Yearly</div>
+              <div id="yearlyCurrent" class="text-xl font-bold text-red-400">$2,160</div>
+            </div>
+            <div class="p-4 bg-slate-800 rounded-xl">
+              <div class="text-xs text-slate-400 mb-1">New Yearly</div>
+              <div id="yearlyNew" class="text-xl font-bold text-emerald-400">$600</div>
+            </div>
+            <div class="p-4 bg-cyan-500/20 border border-cyan-500/30 rounded-xl">
+              <div class="text-xs text-cyan-400 mb-1">Your Savings</div>
+              <div id="yearlySavings" class="text-xl font-bold text-cyan-400">$1,211</div>
+            </div>
+          </div>
+          
+          <p class="text-center mt-6 text-slate-500 text-sm">*Includes streaming services (~$50/mo) + setup cost</p>
+        </div>
+      </div>
+      
+      <script is:inline>
+        function updateSavings() {
+          const cableBill = parseInt(document.getElementById('cableBill').value);
+          const yearlyCurrent = cableBill * 12;
+          const yearlyNew = 600;
+          const savings = yearlyCurrent - yearlyNew - 349;
+          
+          document.getElementById('cableValue').textContent = '$' + cableBill;
+          document.getElementById('yearlyCurrent').textContent = '$' + yearlyCurrent.toLocaleString();
+          document.getElementById('yearlyNew').textContent = '$' + yearlyNew.toLocaleString();
+          document.getElementById('yearlySavings').textContent = '$' + savings.toLocaleString();
+        }
+        updateSavings();
+      </script>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-slate-900/50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-center text-3xl md:text-4xl font-bold mb-12 text-white">What Denver Customers Say</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div class="text-amber-400 mb-3">★★★★★</div>
+            <p class="text-slate-400 mb-4 italic">"We were paying $210/month to Comcast. They set us up with an antenna and YouTube TV. Now we pay $65 total and get all the same channels!"</p>
+            <div class="font-semibold text-white">Sarah M.</div>
+            <div class="text-sm text-slate-500">Littleton, CO</div>
+          </div>
+          
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div class="text-amber-400 mb-3">★★★★★</div>
+            <p class="text-slate-400 mb-4 italic">"Worth every penny! They handled everything - installed the antenna, set up all our streaming apps, even showed my mom how to use the remote."</p>
+            <div class="font-semibold text-white">Michael T.</div>
+            <div class="text-sm text-slate-500">Aurora, CO</div>
+          </div>
+          
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div class="text-amber-400 mb-3">★★★★★</div>
+            <p class="text-slate-400 mb-4 italic">"I can finally watch all the Broncos games without paying for 200 channels I never watch. Saved over $1,400 this year!"</p>
+            <div class="font-semibold text-white">Jennifer K.</div>
+            <div class="text-sm text-slate-500">Denver, CO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-center text-3xl md:text-4xl font-bold mb-12 text-white">Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+          <details class="bg-slate-900 border border-slate-800 rounded-xl p-6 cursor-pointer group">
+            <summary class="font-semibold text-white flex justify-between items-center list-none">
+              Will I still get local channels?
+              <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-4 text-slate-400 pl-4 border-l-2 border-cyan-500/50">Yes! Our HD antenna installation gets you ABC, CBS, NBC, FOX, PBS, and 50+ more local channels completely free. Crystal clear reception in the Denver metro area.</p>
+          </details>
+          
+          <details class="bg-slate-900 border border-slate-800 rounded-xl p-6 cursor-pointer group">
+            <summary class="font-semibold text-white flex justify-between items-center list-none">
+              What about sports and live TV?
+              <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-4 text-slate-400 pl-4 border-l-2 border-cyan-500/50">We set you up with streaming services like YouTube TV or Hulu + Live TV that include ESPN, NFL Network, local sports, and all major cable channels. Usually $50-70/month vs $150+ for cable.</p>
+          </details>
+          
+          <details class="bg-slate-900 border border-slate-800 rounded-xl p-6 cursor-pointer group">
+            <summary class="font-semibold text-white flex justify-between items-center list-none">
+              How long does installation take?
+              <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-4 text-slate-400 pl-4 border-l-2 border-cyan-500/50">Most complete installations are done in 4-5 hours. We handle the antenna mounting, all wiring, device setup, app configuration, and user training. You can watch TV that same evening!</p>
+          </details>
+          
+          <details class="bg-slate-900 border border-slate-800 rounded-xl p-6 cursor-pointer group">
+            <summary class="font-semibold text-white flex justify-between items-center list-none">
+              Do you service my area?
+              <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-4 text-slate-400 pl-4 border-l-2 border-cyan-500/50">We serve Denver, Aurora, Littleton, Boulder, Lakewood, Centennial, Highlands Ranch, Parker, and Colorado Springs. $25 travel fee outside 20-mile radius of downtown Denver.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="contact" class="py-20 bg-slate-900/50">
+      <div class="max-w-2xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Book Your Free Consultation</h2>
+          <p class="text-slate-400">Same-week appointments available across Denver metro</p>
+        </div>
+        
+        <div class="bg-slate-900 border border-cyan-500/30 rounded-2xl overflow-hidden">
+          <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border-b border-slate-800 p-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">Cord Cutting Service</h3>
+                <p class="text-cyan-400 text-sm">Free consultation • $349 complete package</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6">
+            <form class="booking-form space-y-5" data-type="cable_cutting">
+              <input type="hidden" name="service_type" value="cable_cutting">
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2">Service Interest *</label>
+                <select name="description" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                  <option value="">Select service...</option>
+                  <option value="Free Consultation">Free Consultation</option>
+                  <option value="Complete Package ($349)">Complete Package ($349)</option>
+                  <option value="Antenna Only ($199)">Antenna Only ($199)</option>
+                  <option value="Streaming Setup Only ($149)">Streaming Setup Only ($149)</option>
+                  <option value="Ongoing Support ($29/mo)">Ongoing Support ($29/mo)</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2">Current Monthly Cable Bill</label>
+                <select name="current_bill" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                  <option value="">Select range...</option>
+                  <option value="100-150">$100 - $150</option>
+                  <option value="150-200">$150 - $200</option>
+                  <option value="200-250">$200 - $250</option>
+                  <option value="250+">$250+</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2">Tell us about your setup</label>
+                <textarea name="address" rows="3" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-cyan-500 focus:outline-none" placeholder="e.g., Current provider, number of TVs, must-have channels..."></textarea>
+              </div>
+
+              <div class="border-t border-slate-700 pt-5">
+                <h4 class="text-sm font-medium text-slate-300 mb-4">Contact Information</h4>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs text-slate-400 mb-1">First Name *</label>
+                    <input type="text" name="first_name" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none" placeholder="John">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-slate-400 mb-1">Last Name *</label>
+                    <input type="text" name="last_name" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none" placeholder="Smith">
+                  </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                  <div>
+                    <label class="block text-xs text-slate-400 mb-1">Email *</label>
+                    <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none" placeholder="john@example.com">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-slate-400 mb-1">Phone *</label>
+                    <input type="tel" name="phone" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none" placeholder="(303) 555-0123">
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <label class="block text-xs text-slate-400 mb-1">Preferred Date</label>
+                  <input type="date" name="preferred_date" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none">
+                </div>
+              </div>
+
+              <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-lg transition-all">
+                Request Free Consultation
+              </button>
+              
+              <div class="status-message hidden p-4 rounded-lg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Set minimum date to today
+    document.querySelector('input[type="date"]').min = new Date().toISOString().split('T')[0];
+
+    // Handle form submission
+    document.querySelector('.booking-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const statusDiv = e.target.querySelector('.status-message');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<span class="inline-block animate-spin mr-2">⟳</span> Sending...';
+      
+      try {
+        const response = await fetch('https://api.milehightechrescue.com/booking', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+        });
+        
+        console.log('Response status:', response.status);
+        console.log('Response OK:', response.ok);
+        
+        const responseText = await response.text();
+        console.log('Response body:', responseText);
+        
+        if (response.ok) {
+          statusDiv.className = 'block p-4 rounded-lg bg-emerald-500/20 border border-emerald-500/50 text-emerald-400 text-center';
+          statusDiv.innerHTML = '<strong>✅ Request Received!</strong><br>We will contact you within 24 hours.<br><small>Status: ' + response.status + '</small>';
+          e.target.reset();
+        } else {
+          statusDiv.className = 'block p-4 rounded-lg bg-red-500/20 border border-red-500/50 text-red-400 text-center';
+          statusDiv.innerHTML = '<strong>❌ API Error</strong><br>Status: ' + response.status + '<br>' + responseText.substring(0, 200);
+        }
+      } catch (err) {
+        console.error('Fetch error:', err);
+        statusDiv.className = 'block p-4 rounded-lg bg-amber-500/20 border border-amber-500/50 text-amber-400 text-center';
+        statusDiv.innerHTML = '<strong>⚠️ Network Error</strong><br>Could not connect to api.milehightechrescue.com<br><small>' + err.message + '</small>';
+      }
+      
+      btn.disabled = false;
+      btn.textContent = 'Request Free Consultation';
+    });
+  </script>
+</Layout>
