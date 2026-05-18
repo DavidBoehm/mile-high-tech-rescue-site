@@ -82,6 +82,7 @@ const description = "Calculate exactly how much you'll save by cutting cable. Co
             font-weight: 500;
             color: #cbd5e1;
         }
+        .input-group input[type="number"],
         .input-group select {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -91,7 +92,12 @@ const description = "Calculate exactly how much you'll save by cutting cable. Co
             color: white;
             font-size: 1rem;
             transition: all 0.3s;
-            cursor: pointer;
+        }
+        .input-group input[type="number"]:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #22c55e;
+            background: rgba(15, 23, 42, 0.95);
         }
         .input-group select option {
             background: #0f172a;
@@ -101,11 +107,6 @@ const description = "Calculate exactly how much you'll save by cutting cable. Co
         .input-group select option:hover,
         .input-group select option:focus {
             background: #1e293b;
-        }
-        .input-group select:focus {
-            outline: none;
-            border-color: #22c55e;
-            background: rgba(15, 23, 42, 0.95);
         }
         
         /* Checkboxes */
