@@ -1,0 +1,26 @@
+---
+import MinimalLayout from '../layouts/MinimalLayout.astro';
+import CableCuttingCalculator from '../components/cable-calculator/CableCuttingCalculator.astro';
+---
+
+<MinimalLayout title="Cable Cutting Calculator | Mile High Tech Rescue">
+  <div class="py-12 px-4">
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Stop Overpaying for Cable
+      </h1>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+        See exactly how much you could save by switching to a modern streaming setup tailored to your home and viewing habits.
+      </p>
+    </div>
+    
+    <CableCuttingCalculator />
+    
+    <div class="max-w-3xl mx-auto mt-12 p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
+      <p class="text-gray-400">
+        Need help understanding these results? <br class="hidden sm:block" />
+        <a href="tel:+12165432060" class="text-tech-cyan font-bold hover:text-white transition-colors">Call (216) 543-2060</a> to chat with a technician.
+      </p>
+    </div>
+  </div>
+</MinimalLayout>

@@ -1,0 +1,398 @@
+---
+/**
+ * CableCuttingCalculator Astro Component
+ * A multi-step assessment tool to estimate savings when switching to streaming.
+ * Following specs from cable-calculator-docs.md
+ */
+---
+
+<div id="cable-calculator-root" class="max-w-3xl mx-auto my-12 p-6 rounded-3xl bg-tech-card border border-white/10 text-white shadow-2xl">
+  <!-- Progress Bar -->
+  <div class="mb-8">
+    <div class="flex justify-between mb-2 text-sm font-medium text-gray-400">
+      <span id="step-label">Step 1 of 5</span>
+      <span id="step-percent">20%</span>
+    </div>
+    <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+      <div id="step-progress" class="bg-gradient-to-r from-tech-accent to-tech-cyan h-full transition-all duration-300" style="width: 20%"></div>
+    </div>
+  </div>
+
+  <div id="calculator-content" class="min-h-[400px]">
+    <!-- Step 1: Current Provider & Bill -->
+    <div id="step-1" class="step-pane space-y-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">Current Setup & Bills</h2>
+        <p class="text-gray-400">Let's see what you're currently paying for TV and Internet.</p>
+      </div>
+      
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Current TV Provider</label>
+            <select id="provider" class="w-full p-4 rounded-xl bg-tech-darker border border-white/10 text-white focus:border-tech-accent outline-none transition-all">
+              <option value="" disabled selected>Select provider...</option>
+              <option value="xfinity">Xfinity</option>
+              <option value="directv">DirecTV</option>
+              <option value="dish">Dish Network</option>
+              <option value="spectrum">Spectrum</option>
+              <option value="cox">Cox</option>
+              <option value="other">Other / Local</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Monthly TV Bill ($)</label>
+            <input type="number" id="tvBill" placeholder="0.00" 
+                   class="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-tech-accent focus:ring-1 focus:ring-tech-accent outline-none transition-all text-white" />
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
+          <div>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Monthly Internet Bill ($)</label>
+            <input type="number" id="internetBill" placeholder="0.00" 
+                   class="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-tech-accent focus:ring-1 focus:ring-tech-accent outline-none transition-all text-white" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Internet Speed</label>
+            <select id="internetSpeed" class="w-full p-4 rounded-xl bg-tech-darker border border-white/10 text-white focus:border-tech-accent outline-none transition-all">
+              <option value="" disabled selected>Select speed...</option>
+              <option value="low">Below 50 Mbps</option>
+              <option value="mid">50 - 200 Mbps</option>
+              <option value="high">200 - 1000 Mbps (Gigabit)</option>
+              <option value="ultra">1000+ Mbps</option>
+            </select>
+          </div>
+        </div>
+        <p class="text-xs text-gray-500 italic">Tip: Include box rentals, DVR fees, and premium channels in your TV bill.</p>
+      </div>
+    </div>
+
+    <!-- Step 2: Content Preferences -->
+    <div id="step-2" class="step-pane hidden space-y-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">What Do You Watch?</h2>
+        <p class="text-gray-400">Help us pick the right services for you. Select all that apply.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Sports -->
+        <label class="flex items-center p-4 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
+          <input type="checkbox" name="content" value="sports" class="w-5 h-5 accent-tech-accent mr-4" />
+          <div class="flex-1">
+            <span class="block font-bold text-white group-hover:text-tech-cyan transition-colors">Live Sports</span>
+            <span class="text-sm text-gray-400">NBA, NFL, MLB, NHL, and College Sports</span>
+          </div>
+        </label>
+        <!-- Local News -->
+        <label class="flex items-center p-4 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
+          <input type="checkbox" name="content" value="local" class="w-5 h-5 accent-tech-accent mr-4" />
+          <div class="flex-1">
+            <span class="block font-bold text-white group-hover:text-tech-cyan transition-colors">Local News & Weather</span>
+            <span class="text-sm text-gray-400">ABC, CBS, NBC, FOX and regional news</span>
+          </div>
+        </label>
+        <!-- Movies/Shows -->
+        <label class="flex items-center p-4 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
+          <input type="checkbox" name="content" value="movies" class="w-5 h-5 accent-tech-accent mr-4" />
+          <div class="flex-1">
+            <span class="block font-bold text-white group-hover:text-tech-cyan transition-colors">Movies & Binge-Watching</span>
+            <span class="text-sm text-gray-400">Netflix, Disney+, HBO Max, Apple TV+</span>
+          </div>
+        </label>
+        <!-- Special Interest -->
+        <label class="flex items-center p-4 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all group">
+          <input type="checkbox" name="content" value="specialty" class="w-5 h-5 accent-tech-accent mr-4" />
+          <div class="flex-1">
+            <span class="block font-bold text-white group-hover:text-tech-cyan transition-colors">Specialty Channels</span>
+            <span class="text-sm text-gray-400">HGTV, Food Network, Discovery, Hallmark</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Step 3: Home & Wi-Fi -->
+    <div id="step-3" class="step-pane hidden space-y-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">Home & Wi-Fi</h2>
+        <p class="text-gray-400">Streaming needs a strong connection.</p>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Home Size</label>
+            <select id="houseSize" class="w-full p-4 rounded-xl bg-tech-darker border border-white/10 text-white focus:border-tech-accent outline-none transition-all">
+              <option value="" disabled selected>Select size...</option>
+              <option value="small">Under 1,500 sq ft</option>
+              <option value="medium">1,500 - 2,500 sq ft</option>
+              <option value="large">Over 2,500 sq ft</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Household Streamers</label>
+            <div class="grid grid-cols-4 gap-2">
+              <button type="button" data-value="1" class="streamer-btn p-4 rounded-xl bg-white/5 border border-white/10 border-tech-accent bg-tech-accent/10 transition-all text-center font-bold">1</button>
+              <button type="button" data-value="2" class="streamer-btn p-4 rounded-xl bg-white/5 border border-white/10 hover:border-tech-accent transition-all text-center font-bold">2</button>
+              <button type="button" data-value="3" class="streamer-btn p-4 rounded-xl bg-white/5 border border-white/10 hover:border-tech-accent transition-all text-center font-bold">3</button>
+              <button type="button" data-value="4" class="streamer-btn p-4 rounded-xl bg-white/5 border border-white/10 hover:border-tech-accent transition-all text-center font-bold">4+</button>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center p-4 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all">
+          <input type="checkbox" id="deadZones" class="w-5 h-5 accent-tech-accent mr-4" />
+          <span class="text-white">I have Wi-Fi "dead zones" in my home</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Habits -->
+    <div id="step-4" class="step-pane hidden space-y-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">Tech Comfort</h2>
+        <p class="text-gray-400">We'll tailor the setup to your experience.</p>
+      </div>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-2 text-gray-300">How comfortable are you with new tech?</label>
+          <div class="grid grid-cols-1 gap-2">
+            <button type="button" data-level="beginner" class="tech-level-btn p-4 rounded-xl bg-white/5 border border-white/10 hover:border-tech-accent transition-all text-left">
+              <strong class="block text-white">Beginner</strong>
+              <span class="text-sm text-gray-400">"I'd prefer someone just set it all up for me."</span>
+            </button>
+            <button type="button" data-level="intermediate" class="tech-level-btn p-4 rounded-xl bg-white/5 border border-white/10 hover:border-tech-accent transition-all text-left">
+              <strong class="block text-white">Intermediate</strong>
+              <span class="text-sm text-gray-400">"I can handle some menus but might need a hand."</span>
+            </button>
+            <button type="button" data-level="advanced" class="tech-level-btn p-4 rounded-xl bg-white/5 border border-white/10 hover:border-tech-accent transition-all text-left">
+              <strong class="block text-white">Advanced</strong>
+              <span class="text-sm text-gray-400">"I love tech and usually figure it out myself."</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5: Results -->
+    <div id="step-5" class="step-pane hidden space-y-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">Your Estimated Savings</h2>
+        <p class="text-gray-400">Based on your answers, here is your potential.</p>
+      </div>
+
+      <div class="bg-gradient-to-br from-tech-accent/20 to-tech-cyan/20 p-8 rounded-3xl border border-tech-accent/30 text-center">
+        <div class="text-sm text-gray-300 uppercase tracking-wider mb-2">Estimated Monthly Savings</div>
+        <div id="monthly-savings" class="text-6xl font-black text-white mb-2">$0.00</div>
+        <div id="yearly-savings" class="text-xl text-tech-cyan font-semibold">Yearly Total: $0.00</div>
+      </div>
+
+      <div id="recommendations" class="space-y-3">
+        <!-- Dynamic Recommendations injected here -->
+      </div>
+
+      <div class="pt-6 border-t border-white/10">
+        <h3 class="text-xl font-bold mb-4 text-center">Ready to start saving?</h3>
+        <div class="grid grid-cols-1 gap-4">
+          <button id="schedule-btn" class="p-5 bg-gradient-to-r from-tech-accent to-tech-cyan rounded-xl font-bold text-lg hover:scale-[1.02] transition-transform">
+            📅 Schedule Free Consultation
+          </button>
+          <button id="reset-btn" class="p-3 text-sm text-gray-500 hover:text-white transition-colors">
+            Start Over
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div id="nav-controls" class="mt-12 flex justify-between items-center">
+    <button id="prev-btn" class="px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors invisible">
+      ← Back
+    </button>
+    <button id="next-btn" class="px-8 py-3 bg-white text-tech-dark font-bold rounded-xl hover:bg-tech-cyan hover:text-white transition-all">
+      Continue
+    </button>
+  </div>
+</div>
+
+<script>
+  const state = {
+    provider: '',
+    tvBill: 0,
+    internetBill: 0,
+    internetSpeed: '',
+    content: [],
+    houseSize: '',
+    totalStreamers: '1',
+    streamerCount: '',
+    deadZones: false,
+    techLevel: '',
+    currentStep: 1
+  };
+
+  const stepPanes = document.querySelectorAll('.step-pane');
+  const nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const stepLabel = document.getElementById('step-label');
+  const stepPercent = document.getElementById('step-percent');
+  const stepProgress = document.getElementById('step-progress');
+
+  function updateUI() {
+    stepPanes.forEach((pane, idx) => {
+      pane.classList.toggle('hidden', idx + 1 !== state.currentStep);
+    });
+
+    const percent = (state.currentStep / 5) * 100;
+    stepLabel.innerText = `Step ${state.currentStep} of 5`;
+    stepPercent.innerText = `${percent}%`;
+    stepProgress.style.width = `${percent}%`;
+
+    prevBtn.classList.toggle('invisible', state.currentStep === 1);
+    nextBtn.classList.toggle('hidden', state.currentStep === 5);
+    nextBtn.innerText = state.currentStep === 4 ? 'Calculate Savings' : 'Continue';
+
+    if (state.currentStep === 5) {
+      calculateResults();
+    }
+  }
+
+  function calculateResults() {
+    let streamingCost = 0;
+    const recs = [];
+
+    if (state.content.includes('sports') || state.content.includes('local')) {
+      streamingCost += 72.99;
+      recs.push({ title: 'YouTube TV', desc: 'Perfect for live sports and local news.', cost: '$72.99/mo' });
+    } else if (state.content.includes('local')) {
+      recs.push({ title: 'HD Antenna', desc: 'Free local channels after a one-time hardware cost.', cost: 'Free' });
+    }
+
+    if (state.content.includes('movies')) {
+      streamingCost += 15.49;
+      recs.push({ title: 'Netflix Standard', desc: 'Unlimited movies and TV series.', cost: '$15.49/mo' });
+    }
+
+    if (state.content.includes('specialty')) {
+      streamingCost += 45.00;
+      recs.push({ title: 'Sling TV / Hulu Live', desc: 'Access to HGTV, Food Network and more specialty cable channels.', cost: '~$45.00/mo' });
+    }
+
+    const monthlySavings = Math.max(0, state.tvBill - streamingCost);
+    const yearlySavings = monthlySavings * 12;
+
+    document.getElementById('monthly-savings').innerText = `$${monthlySavings.toFixed(2)}`;
+    document.getElementById('yearly-savings').innerText = `Yearly Total: $${yearlySavings.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+    if (state.houseSize === 'large') {
+      recs.push({ title: 'Mesh Wi-Fi System', desc: 'Recommended for homes over 2,500 sq ft to avoid buffering.', cost: 'Hardware Cost' });
+    } else if (state.houseSize === 'medium' || state.deadZones) {
+      recs.push({ title: 'Wi-Fi Extender', desc: 'Helps eliminate dead zones in medium-sized homes.', cost: 'Hardware Cost' });
+    }
+
+    // High Streamer Count + Slow Internet = Urgent Speed Upgrade
+    const streamers = parseInt(state.totalStreamers) || 0;
+    if ((streamers >= 3 && state.internetSpeed !== 'ultra') || (state.internetSpeed === 'low' || state.internetSpeed === 'mid')) {
+      recs.push({ title: 'High-Capacity Internet', desc: 'With multiple simultaneous streams, a Gigabit connection is highly recommended to avoid buffering.', cost: 'Varies by Provider' });
+    }
+
+    if (state.techLevel === 'beginner') {
+      recs.push({ title: 'White-Glove Setup', desc: 'Our professional setup ensures zero frustration.', cost: 'Consultation' });
+    }
+
+    const recContainer = document.getElementById('recommendations');
+    recContainer.innerHTML = recs.map(r => `
+      <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center">
+        <div>
+          <strong class="block text-white">${r.title}</strong>
+          <span class="text-sm text-gray-400">${r.desc}</span>
+        </div>
+        <div class="text-tech-cyan font-bold">${r.cost}</div>
+      </div>
+    `).join('');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (state.currentStep < 5) {
+      if (state.currentStep === 1) {
+        state.provider = document.getElementById('provider').value;
+        state.tvBill = parseFloat(document.getElementById('tvBill').value) || 0;
+        state.internetBill = parseFloat(document.getElementById('internetBill').value) || 0;
+        state.internetSpeed = document.getElementById('internetSpeed').value;
+      } else if (state.currentStep === 2) {
+        state.content = Array.from(document.querySelectorAll('input[name="content"]:checked')).map(el => el.value);
+      } else if (state.currentStep === 3) {
+        state.houseSize = document.getElementById('houseSize').value;
+        state.deadZones = document.getElementById('deadZones').checked;
+      } else if (state.currentStep === 4) {
+        // Tech level handled via event listener
+      }
+
+      state.currentStep++;
+      updateUI();
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (state.currentStep > 1) {
+      state.currentStep--;
+      updateUI();
+    }
+  });
+
+  document.querySelectorAll('.streamer-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.streamer-btn').forEach(b => b.classList.remove('border-tech-accent', 'bg-tech-accent/10'));
+      btn.classList.add('border-tech-accent', 'bg-tech-accent/10');
+      state.totalStreamers = btn.dataset.value;
+    });
+  });
+
+  document.querySelectorAll('.tech-level-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tech-level-btn').forEach(b => b.classList.remove('border-tech-accent', 'bg-tech-accent/10'));
+      btn.classList.add('border-tech-accent', 'bg-tech-accent/10');
+      state.techLevel = btn.dataset.level;
+    });
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    state.currentStep = 1;
+    state.provider = '';
+    state.tvBill = 0;
+    state.internetBill = 0;
+    state.internetSpeed = '';
+    state.content = [];
+    state.houseSize = '';
+    state.totalStreamers = '';
+    state.streamerCount = '';
+    state.deadZones = false;
+    state.techLevel = '';
+    
+    document.getElementById('provider').value = '';
+    document.getElementById('tvBill').value = '';
+    document.getElementById('internetBill').value = '';
+    document.getElementById('internetSpeed').value = '';
+    document.querySelectorAll('input[name="content"]').forEach(c => c.checked = false);
+    document.getElementById('houseSize').value = '';
+    document.querySelectorAll('.streamer-btn').forEach(b => b.classList.remove('border-tech-accent', 'bg-tech-accent/10'));
+    // Reset to default 1
+    const defaultBtn = document.querySelector('.streamer-btn[data-value="1"]');
+    if (defaultBtn) defaultBtn.classList.add('border-tech-accent', 'bg-tech-accent/10');
+    state.totalStreamers = '1';
+    document.getElementById('deadZones').checked = false;
+    document.querySelectorAll('.tech-level-btn').forEach(b => b.classList.remove('border-tech-accent', 'bg-tech-accent/10'));
+    
+    updateUI();
+  });
+
+  document.getElementById('schedule-btn').addEventListener('click', async () => {
+    alert('This would normally redirect to the booking form with your assessment data attached!');
+    console.log('Sending to https://api.milehightechrescue.com/booking', {
+      service_type: 'cable_cutting_assessment',
+      assessment_data: JSON.stringify(state)
+    });
+  });
+
+  updateUI();
+</script>
