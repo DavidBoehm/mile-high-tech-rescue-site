@@ -1,0 +1,665 @@
+---
+// Comprehensive Cable Cutting Cost Calculator
+const title = "Cable Cutting Calculator | Save $600-$1,200/Year";
+const description = "Calculate exactly how much you'll save by cutting cable. Compare streaming costs, equipment, and see your break-even point.";
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0f1c;
+            color: #fff;
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        /* Container utilities */
+        .max-w-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; }
+        .max-w-4xl { max-width: 56rem; margin-left: auto; margin-right: auto; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        
+        /* Typography */
+        .text-hero { font-size: 1.75rem; font-weight: 800; line-height: 1.1; }
+        .text-headline { font-size: 1.25rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.75rem; }
+        .text-subhead { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+        .text-center { text-align: center; }
+        
+        /* Colors */
+        .money-green { color: #22c55e; }
+        .text-slate-300 { color: #cbd5e1; }
+        .text-slate-400 { color: #94a3b8; }
+        .text-slate-500 { color: #64748b; }
+        
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.25rem;
+        }
+        
+        /* Hero - Compact */
+        .hero {
+            padding: 1.5rem 1rem;
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%);
+        }
+        
+        /* Calculator Grid - tighter */
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Input Groups */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+        .input-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .input-group select option {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem;
+        }
+        .input-group select option:hover,
+        .input-group select option:focus {
+            background: #1e293b;
+        }
+        .input-group select:focus {
+            outline: none;
+            border-color: #22c55e;
+            background: rgba(15, 23, 42, 0.95);
+        }
+        
+        /* Checkboxes */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .checkbox-group:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 1.25rem;
+            height: 1.25rem;
+            accent-color: #22c55e;
+        }
+        .checkbox-group .service-name {
+            flex: 1;
+            font-weight: 500;
+        }
+        .checkbox-group .service-price {
+            color: #22c55e;
+            font-weight: 600;
+        }
+        
+        /* Results Panel */
+        .results-panel {
+            position: sticky;
+            top: 2rem;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .result-row:last-child {
+            border-bottom: none;
+        }
+        .result-row.total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            border-top: 2px solid rgba(34, 197, 94, 0.5);
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+        .result-value {
+            font-weight: 600;
+        }
+        .result-value.positive { color: #22c55e; }
+        .result-value.negative { color: #ef4444; }
+        
+        /* Big Savings Display */
+        .savings-hero {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(251, 191, 36, 0.05));
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+        }
+        .savings-hero .label {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+        .savings-hero .amount {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: #22c55e;
+            text-shadow: 0 0 40px rgba(34, 197, 94, 0.3);
+        }
+        .savings-hero .period {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-top: 0.5rem;
+        }
+        
+        /* Break-even Box */
+        .break-even {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .break-even .label {
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .break-even .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fbbf24;
+        }
+        
+        /* CTA Button */
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.4);
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .comparison-table th {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+        .comparison-table .total-row {
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-hero mb-4">Cable Cutting Calculator</h1>
+            <p class="text-subhead text-slate-400">See exactly how much you'll save by switching to streaming + antenna</p>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="py-12 px-4">
+        <div class="calculator-grid">
+            <!-- Inputs -->
+            <div class="inputs-panel">
+                <div class="glass-panel">
+                    <h2 class="text-headline mb-6">Your Current Setup</h2>
+                    
+                    <!-- Cable Bill -->
+                    <div class="input-group">
+                        <label for="cableBill">Monthly Cable/Satellite Bill</label>
+                        <input type="number" id="cableBill" value="180" min="0" step="5">
+                    </div>
+                    
+                    <!-- Cable Box Fees -->
+                    <div class="input-group">
+                        <label for="boxFees">Monthly Box/Rental Fees</label>
+                        <input type="number" id="boxFees" value="25" min="0" step="5">
+                        <p class="text-slate-500 text-sm mt-1">DVRs, extra boxes, regional sports fees</p>
+                    </div>
+                    
+                    <!-- Premium Channels -->
+                    <div class="input-group">
+                        <label for="premiumChannels">Premium Channels (HBO, Showtime, etc.)</label>
+                        <input type="number" id="premiumChannels" value="30" min="0" step="5">
+                    </div>
+                    
+                    <h3 class="text-subhead mb-4 mt-8">Streaming Services You'll Want</h3>
+                    
+                    <!-- Streaming Checkboxes -->
+                    <div id="streamingServices">
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="15.49" data-name="Netflix Standard">
+                            <span class="service-name">Netflix Standard</span>
+                            <span class="service-price">$15.49/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="9.99" data-name="Hulu (No Ads)">
+                            <span class="service-name">Hulu (No Ads)</span>
+                            <span class="service-price">$9.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="72.99" data-name="YouTube TV" checked>
+                            <span class="service-name">YouTube TV</span>
+                            <span class="service-price">$72.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="6.99" data-name="Disney+">
+                            <span class="service-name">Disney+</span>
+                            <span class="service-price">$6.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="8.99" data-name="Max (HBO)">
+                            <span class="service-name">Max (HBO)</span>
+                            <span class="service-price">$8.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="5.99" data-name="Peacock">
+                            <span class="service-name">Peacock</span>
+                            <span class="service-price">$5.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="11.99" data-name="Paramount+">
+                            <span class="service-name">Paramount+</span>
+                            <span class="service-price">$11.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="streaming" value="8.99" data-name="Apple TV+">
+                            <span class="service-name">Apple TV+</span>
+                            <span class="service-price">$8.99/mo</span>
+                        </label>
+                    </div>
+                    
+                    <h3 class="text-subhead mb-4 mt-8">Sports Packages</h3>
+                    
+                    <div id="sportsServices">
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="sports" value="11.99" data-name="ESPN+">
+                            <span class="service-name">ESPN+</span>
+                            <span class="service-price">$11.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="sports" value="14.99" data-name="NFL Sunday Ticket (YouTube)">
+                            <span class="service-name">NFL Sunday Ticket (YouTube)</span>
+                            <span class="service-price">$14.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="sports" value="19.99" data-name="MLB.TV">
+                            <span class="service-name">MLB.TV</span>
+                            <span class="service-price">$19.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="sports" value="19.99" data-name="NBA League Pass">
+                            <span class="service-name">NBA League Pass</span>
+                            <span class="service-price">$19.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="sports" value="9.99" data-name="DAZN">
+                            <span class="service-name">DAZN (Combat Sports)</span>
+                            <span class="service-price">$9.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="sports" value="6.99" data-name="FuboTV Sports">
+                            <span class="service-name">FuboTV Pro</span>
+                            <span class="service-price">$79.99/mo</span>
+                        </label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="sports" value="20.00" data-name="Regional Sports Fee (Cable)">
+                            <span class="service-name">Regional Sports Fee (Cable)</span>
+                            <span class="service-price">$20/mo</span>
+                        </label>
+                    </div>
+                    
+                    <h3 class="text-subhead mb-4 mt-8">Internet Comparison</h3>
+                    
+                    <div class="input-group">
+                        <label for="currentInternet">Your Current Internet Speed & Cost</label>
+                        <select id="currentInternet" class="form-input">
+                            <option value="0" selected>I don't have internet (using cable bundle)</option>
+                            <option value="50">100 Mbps - $50/mo (Typical bundled rate)</option>
+                            <option value="65">200 Mbps - $65/mo</option>
+                            <option value="75">300 Mbps - $75/mo</option>
+                            <option value="90">500 Mbps - $90/mo</option>
+                            <option value="110">1 Gbps - $110/mo</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="newInternet">Streaming-Ready Internet Needed</label>
+                        <select id="newInternet" class="form-input">
+                            <option value="50">100 Mbps - $50/mo (Minimum for streaming)</option>
+                            <option value="55" selected>200 Mbps - $55/mo (Recommended)</option>
+                            <option value="65">300 Mbps - $65/mo (Multiple 4K streams)</option>
+                            <option value="75">500 Mbps - $75/mo (Heavy users)</option>
+                            <option value="90">1 Gbps - $90/mo (Future-proof)</option>
+                        </select>
+                        <p class="text-slate-500 text-sm mt-1">YouTube TV recommends 25 Mbps per stream. For 4K, get 50+ Mbps.</p>
+                    </div>
+                    
+                    <h3 class="text-subhead mb-4 mt-8">One-Time Setup Costs</h3>
+                    
+                    <div class="input-group">
+                        <label for="antennaCost">HD Antenna + Installation</label>
+                        <input type="number" id="antennaCost" value="199" min="0" step="25">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="streamingDevice">Streaming Device (Roku/Fire TV/Apple TV)</label>
+                        <input type="number" id="streamingDevice" value="50" min="0" step="25">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="results-panel">
+                <div class="glass-panel results-panel">
+                    <!-- Big Savings Number -->
+                    <div class="savings-hero">
+                        <div class="label">Your Yearly Savings</div>
+                        <div class="amount" id="yearlySavings">$600</div>
+                        <div class="period">per year</div>
+                    </div>
+                    
+                    <!-- Detailed Breakdown -->
+                    <h3 class="text-subhead mb-4">Cost Breakdown</h3>
+                    
+                    <div class="result-row">
+                        <span>Current Monthly Total</span>
+                        <span class="result-value negative" id="currentMonthly">$235</span>
+                    </div>
+                    <div class="result-row">
+                        <span>New Monthly Total</span>
+                        <span class="result-value" id="newMonthly">$89</span>
+                    </div>
+                    <div class="result-row">
+                        <span>Monthly Savings</span>
+                        <span class="result-value positive" id="monthlySavings">$146</span>
+                    </div>
+                    <div class="result-row">
+                        <span>One-Time Setup Cost</span>
+                        <span class="result-value negative" id="setupCost">$249</span>
+                    </div>
+                    <div class="result-row total">
+                        <span>Yearly Savings</span>
+                        <span class="result-value positive" id="yearlySavingsDetail">$1,503</span>
+                    </div>
+                    
+                    <!-- Break Even -->
+                    <div class="break-even">
+                        <div class="label">Break-even Point</div>
+                        <div class="value" id="breakEven">2 months</div>
+                        <p class="text-slate-400 text-sm mt-2">After this, you're saving money every month</p>
+                    </div>
+                    
+                    <!-- 5 Year Projection -->
+                    <div class="result-row" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <span>5-Year Total Savings</span>
+                        <span class="result-value positive" id="fiveYearSavings" style="font-size: 1.5rem;">$7,515</span>
+                    </div>
+                    
+                    <!-- CTA -->
+                    <a href="/cable-cutting#book" class="btn-primary">
+                        Book Free Consultation
+                    </a>
+                    
+                    <p class="text-center text-slate-500 text-sm mt-4">
+                        We'll verify your savings and get you set up
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-panel">
+                <h2 class="text-headline text-center mb-6">What You'll Get</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Cable</th>
+                            <th class="money-green">Cord Cutting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Local Channels (ABC, CBS, NBC, FOX)</td>
+                            <td>✓ Included</td>
+                            <td class="money-green">✓ Free with antenna</td>
+                        </tr>
+                        <tr>
+                            <td>DVR / Cloud Recording</td>
+                            <td>$15-25/month extra</td>
+                            <td class="money-green">✓ Included with YouTube TV</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-device Streaming</td>
+                            <td>Limited</td>
+                            <td class="money-green">✓ Unlimited devices</td>
+                        </tr>
+                        <tr>
+                            <td>No Contracts</td>
+                            <td>✗ 1-2 year commitment</td>
+                            <td class="money-green">✓ Cancel anytime</td>
+                        </tr>
+                        <tr>
+                            <td>4K Quality</td>
+                            <td>$20/month extra</td>
+                            <td class="money-green">✓ Often included</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>Monthly Cost</td>
+                            <td id="tableCableCost">$235</td>
+                            <td class="money-green" id="tableNewCost">$89</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script is:inline>
+        // Calculator Logic
+        const inputs = {
+            cableBill: document.getElementById('cableBill'),
+            boxFees: document.getElementById('boxFees'),
+            premiumChannels: document.getElementById('premiumChannels'),
+            antennaCost: document.getElementById('antennaCost'),
+            streamingDevice: document.getElementById('streamingDevice'),
+            currentInternet: document.getElementById('currentInternet'),
+            newInternet: document.getElementById('newInternet')
+        };
+        
+        const streamingCheckboxes = document.querySelectorAll('input[name="streaming"]');
+        const sportsCheckboxes = document.querySelectorAll('input[name="sports"]');
+        
+        function calculate() {
+            // Get current costs
+            const cableMonthly = parseFloat(inputs.cableBill.value) || 0;
+            const boxMonthly = parseFloat(inputs.boxFees.value) || 0;
+            const premiumMonthly = parseFloat(inputs.premiumChannels.value) || 0;
+            const currentInternetCost = parseFloat(inputs.currentInternet.value) || 0;
+            
+            // Current total (excluding internet since we need it for both)
+            const currentMonthly = cableMonthly + boxMonthly + premiumMonthly;
+            
+            // Get streaming costs
+            let streamingMonthly = 0;
+            streamingCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    streamingMonthly += parseFloat(cb.value);
+                }
+            });
+            
+            // Get sports package costs
+            let sportsMonthly = 0;
+            sportsCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    sportsMonthly += parseFloat(cb.value);
+                }
+            });
+            
+            // Get new internet cost
+            const newInternetCost = parseFloat(inputs.newInternet.value) || 55;
+            
+            // Calculate internet cost difference
+            const internetDifference = newInternetCost - currentInternetCost;
+            
+            // New monthly total = streaming + sports + internet difference
+            const newMonthly = streamingMonthly + sportsMonthly + internetDifference;
+            
+            // One-time costs
+            const setupCost = (parseFloat(inputs.antennaCost.value) || 0) + 
+                             (parseFloat(inputs.streamingDevice.value) || 0);
+            
+            // Calculations
+            const monthlySavings = currentMonthly - newMonthly;
+            const yearlySavings = monthlySavings * 12;
+            const fiveYearSavings = yearlySavings * 5 - setupCost;
+            
+            // Break-even calculation
+            const breakEvenMonths = setupCost > 0 && monthlySavings > 0 ? 
+                Math.ceil(setupCost / monthlySavings) : 0;
+            
+            // Update DOM
+            document.getElementById('currentMonthly').textContent = `$${currentMonthly.toFixed(2)}`;
+            document.getElementById('newMonthly').textContent = `$${newMonthly.toFixed(2)}`;
+            
+            // Color code the savings
+            const monthlySavingsEl = document.getElementById('monthlySavings');
+            if (monthlySavings >= 0) {
+                monthlySavingsEl.textContent = `$${monthlySavings.toFixed(2)}`;
+                monthlySavingsEl.className = 'result-value positive';
+            } else {
+                monthlySavingsEl.textContent = `-$${Math.abs(monthlySavings).toFixed(2)}`;
+                monthlySavingsEl.className = 'result-value negative';
+            }
+            
+            document.getElementById('setupCost').textContent = `$${setupCost}`;
+            
+            // Yearly savings display
+            const yearlySavingsEl = document.getElementById('yearlySavings');
+            const yearlySavingsDetailEl = document.getElementById('yearlySavingsDetail');
+            if (yearlySavings >= 0) {
+                yearlySavingsEl.textContent = `$${yearlySavings.toLocaleString()}`;
+                yearlySavingsEl.style.color = '#22c55e';
+                yearlySavingsDetailEl.textContent = `$${yearlySavings.toLocaleString()}`;
+                yearlySavingsDetailEl.className = 'result-value positive';
+            } else {
+                yearlySavingsEl.textContent = `-$${Math.abs(yearlySavings).toLocaleString()}`;
+                yearlySavingsEl.style.color = '#ef4444';
+                yearlySavingsDetailEl.textContent = `-$${Math.abs(yearlySavings).toLocaleString()}`;
+                yearlySavingsDetailEl.className = 'result-value negative';
+            }
+            
+            document.getElementById('fiveYearSavings').textContent = fiveYearSavings >= 0 ? 
+                `$${fiveYearSavings.toLocaleString()}` : `-$${Math.abs(fiveYearSavings).toLocaleString()}`;
+            
+            // Break even text
+            const breakEvenEl = document.getElementById('breakEven');
+            if (monthlySavings <= 0) {
+                breakEvenEl.textContent = 'Not saving';
+            } else if (breakEvenMonths <= 1) {
+                breakEvenEl.textContent = 'Immediately!';
+            } else if (breakEvenMonths === 1) {
+                breakEvenEl.textContent = '1 month';
+            } else {
+                breakEvenEl.textContent = `${breakEvenMonths} months`;
+            }
+            
+            // Table
+            document.getElementById('tableCableCost').textContent = `$${currentMonthly.toFixed(2)}/mo`;
+            document.getElementById('tableNewCost').textContent = `$${newMonthly.toFixed(2)}/mo`;
+        }
+        
+        // Add event listeners
+        Object.values(inputs).forEach(input => {
+            if (input) {
+                input.addEventListener('change', calculate);
+                input.addEventListener('input', calculate);
+            }
+        });
+        
+        streamingCheckboxes.forEach(cb => {
+            cb.addEventListener('change', calculate);
+        });
+        
+        sportsCheckboxes.forEach(cb => {
+            cb.addEventListener('change', calculate);
+        });
+        
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>

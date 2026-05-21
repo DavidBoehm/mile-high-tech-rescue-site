@@ -1,0 +1,779 @@
+---
+// Simple Cable Cutting Calculator - All steps in one file
+const title = "Cable Cutting Calculator | Save $600-$1,200/Year";
+const description = "Calculate exactly how much you'll save by cutting cable. Personalized assessment for your home.";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-header p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+
+    /* Calculator Container */
+    .calculator-container {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      padding: 2rem;
+    }
+
+    /* Step Indicator */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.5;
+      transition: all 0.3s;
+    }
+
+    .step-item.active {
+      opacity: 1;
+    }
+
+    .step-item.completed {
+      opacity: 0.7;
+    }
+
+    .step-number {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .step-item.active .step-number {
+      background: #22c55e;
+      border-color: #22c55e;
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    }
+
+    .step-label {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .step-item.active .step-label {
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .step-line {
+      width: 2rem;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      flex-shrink: 0;
+    }
+
+    /* Step Content */
+    .step-content {
+      min-height: 400px;
+    }
+
+    .step-panel {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .step-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .step-description {
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.75rem;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #22c55e;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .form-input::placeholder {
+      color: #64748b;
+    }
+
+    .help-text {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-top: 0.5rem;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      border-color: rgba(34, 197, 94, 0.5);
+    }
+
+    .card input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .card.selected {
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.1);
+    }
+
+    .card-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-label {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-hint {
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    /* Navigation */
+    .step-navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn {
+      padding: 0.875rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(34, 197, 94, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn.hidden {
+      display: none;
+    }
+
+    /* Step 5 Results */
+    .savings-hero {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05));
+      border: 2px solid rgba(34, 197, 94, 0.3);
+      border-radius: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .savings-label {
+      font-size: 1rem;
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+    }
+
+    .savings-amount {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      color: #22c55e;
+      text-shadow: 0 0 40px rgba(34, 197, 94, 0.3);
+      line-height: 1;
+    }
+
+    .wifi-box {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .wifi-title {
+      color: #fbbf24;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .step-indicator {
+        gap: 0.25rem;
+      }
+      .step-line {
+        width: 1rem;
+      }
+      .step-label {
+        display: none;
+      }
+      .calculator-container {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="page-header">
+      <h1>🔌 Cable Cutting Calculator</h1>
+      <p>Personalized savings estimate for Denver homes</p>
+    </div>
+
+    <div class="calculator-container">
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div class="step-item active" data-step="1">
+          <div class="step-number">1</div>
+          <span class="step-label">Provider</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="2">
+          <div class="step-number">2</div>
+          <span class="step-label">Content</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="3">
+          <div class="step-number">3</div>
+          <span class="step-label">House</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="4">
+          <div class="step-number">4</div>
+          <span class="step-label">Habits</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="5">
+          <div class="step-number">5</div>
+          <span class="step-label">Results</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Provider Info -->
+      <div class="step-panel active" data-step="1">
+        <h2 class="step-title">Your Current Setup</h2>
+        <p class="step-description">We'll use this to calculate your potential savings.</p>
+
+        <div class="form-group">
+          <label>Current TV Provider</label>
+          <select class="form-select" id="provider">
+            <option value="">Select your provider...</option>
+            <option value="xfinity">Xfinity / Comcast</option>
+            <option value="directv">DirecTV</option>
+            <option value="dish">Dish Network</option>
+            <option value="spectrum">Spectrum</option>
+            <option value="cox">Cox</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Monthly TV Bill</label>
+          <input type="number" class="form-input" id="tvBill" placeholder="180" min="0" step="5">
+          <p class="help-text">Include all TV-related charges (boxes, DVR, sports fees)</p>
+        </div>
+      </div>
+
+      <!-- Step 2: Content Preferences -->
+      <div class="step-panel" data-step="2">
+        <h2 class="step-title">What Do You Watch?</h2>
+        <p class="step-description">Help us understand what content matters most.</p>
+
+        <div class="form-group">
+          <label>Content Types (select all that apply)</label>
+          <div class="cards-grid">
+            <div class="card" data-value="sports">
+              <span class="card-icon">🏈</span>
+              <span class="card-label">Sports</span>
+              <span class="card-hint">ESPN, local games</span>
+            </div>
+            <div class="card" data-value="local">
+              <span class="card-icon">📺</span>
+              <span class="card-label">Local Channels</span>
+              <span class="card-hint">ABC, CBS, NBC</span>
+            </div>
+            <div class="card" data-value="movies">
+              <span class="card-icon">🎬</span>
+              <span class="card-label">Movies & Shows</span>
+              <span class="card-hint">Netflix, HBO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: House Info -->
+      <div class="step-panel" data-step="3">
+        <h2 class="step-title">Your Home</h2>
+        <p class="step-description">This helps us assess your Wi-Fi needs.</p>
+
+        <div class="form-group">
+          <label>Home Size</label>
+          <div class="cards-grid">
+            <div class="card" data-value="small">
+              <span class="card-icon">🏠</span>
+              <span class="card-label">Under 1,500 sq ft</span>
+            </div>
+            <div class="card" data-value="medium">
+              <span class="card-icon">🏡</span>
+              <span class="card-label">1,500 - 2,500 sq ft</span>
+            </div>
+            <div class="card" data-value="large">
+              <span class="card-icon">🏘️</span>
+              <span class="card-label">2,500+ sq ft</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="deadZones"> I have Wi-Fi dead zones
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 4: Habits -->
+      <div class="step-panel" data-step="4">
+        <h2 class="step-title">Streaming Habits</h2>
+        <p class="step-description">Help us understand your setup.</p>
+
+        <div class="form-group">
+          <label>Tech Comfort Level</label>
+          <div class="cards-grid">
+            <div class="card" data-value="beginner">
+              <span class="card-label">Beginner</span>
+              <span class="card-hint">Prefer simple setups</span>
+            </div>
+            <div class="card" data-value="intermediate">
+              <span class="card-label">Intermediate</span>
+              <span class="card-hint">Can figure things out</span>
+            </div>
+            <div class="card" data-value="advanced">
+              <span class="card-label">Advanced</span>
+              <span class="card-hint">Comfortable troubleshooting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Results -->
+      <div class="step-panel" data-step="5">
+        <h2 class="step-title">Your Personalized Assessment</h2>
+
+        <!-- Debug Panel (hidden by default, add 'display: block' to debug) -->
+        <div id="debugPanel" style="background: #1e293b; border: 1px solid #334155; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1.5rem; font-family: monospace; font-size: 0.75rem; color: #94a3b8;">
+          <strong style="color: #22c55e;">Debug State:</strong> <pre id="debugState">{}</pre>
+        </div>
+
+        <div class="savings-hero">
+          <div class="savings-label">Estimated Monthly Savings</div>
+          <div class="savings-amount" id="savingsAmount">$0</div>
+        </div>
+
+        <div class="wifi-box">
+          <div class="wifi-title">📶 Wi-Fi Assessment</div>
+          <p id="wifiText">Calculating...</p>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary" id="scheduleBtn" style="width: 100%;">
+            Schedule Free Consultation
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="step-navigation">
+        <button class="btn btn-secondary hidden" id="prevBtn" onclick="if(window.prevStepFunc) window.prevStepFunc()">← Back</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="if(window.nextStepFunc) window.nextStepFunc()">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // DEBUG: Log when script loads
+    console.log('=== CALCULATOR SCRIPT LOADED ===');
+    
+    // Use window for persistent state that survives any script reloads
+    if (!window.cableCalcState) {
+      window.cableCalcState = {
+        provider: '',
+        tvBill: 0,
+        content: [],
+        houseSize: '',
+        deadZones: false,
+        techLevel: '',
+        currentStep: 1
+      };
+    }
+    const state = window.cableCalcState;
+
+    // DEBUG: Log current state
+    console.log('Current state:', JSON.parse(JSON.stringify(state)));
+
+    // Navigation
+    const panels = document.querySelectorAll('.step-panel');
+    const steps = document.querySelectorAll('.step-item');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showStep(stepNum) {
+      console.log('showStep called with:', stepNum, 'type:', typeof stepNum);
+      
+      // Update panels
+      panels.forEach(panel => {
+        const panelStep = panel.dataset.step;
+        console.log('Checking panel with step:', panelStep, 'against:', stepNum);
+        panel.classList.toggle('active', panelStep == stepNum);
+      });
+
+      // Update step indicators
+      steps.forEach(step => {
+        const stepNumValue = parseInt(step.dataset.step);
+        step.classList.remove('active', 'completed');
+        if (stepNumValue === stepNum) {
+          step.classList.add('active');
+        } else if (stepNumValue < stepNum) {
+          step.classList.add('completed');
+        }
+      });
+
+      // Update buttons
+      prevBtn.classList.toggle('hidden', stepNum === 1);
+      nextBtn.textContent = stepNum === 5 ? 'Schedule Consultation' : 'Continue →';
+
+      // Calculate if on results step
+      console.log('Checking if step 5:', stepNum, 'equals 5?', stepNum === 5);
+      if (stepNum === 5) {
+        console.log('*** REACHING STEP 5 - WILL CALCULATE ***');
+        try {
+          calculateAndShowResults();
+        } catch (err) {
+          console.error('ERROR in calculateAndShowResults:', err);
+        }
+      }
+    }
+
+    function nextStep() {
+      const currentState = window.cableCalcState;
+      console.log('NEXT BUTTON CLICKED! Current step:', currentState.currentStep);
+      if (currentState.currentStep < 5) {
+        currentState.currentStep++;
+        console.log('Incremented to step:', currentState.currentStep);
+        showStep(currentState.currentStep);
+      } else {
+        console.log('Already at step 5, not incrementing');
+      }
+    }
+
+    function prevStep() {
+      const currentState = window.cableCalcState;
+      console.log('Prev clicked, current step:', currentState.currentStep);
+      if (currentState.currentStep > 1) {
+        currentState.currentStep--;
+        showStep(currentState.currentStep);
+      }
+    }
+
+    // Event listeners
+    console.log('Attaching event listeners to buttons');
+    console.log('nextBtn found:', !!nextBtn);
+    console.log('prevBtn found:', !!prevBtn);
+    
+    nextBtn.addEventListener('click', () => {
+      console.log('NEXT BUTTON CLICK EVENT FIRED!');
+      nextStep();
+    });
+    
+    prevBtn.addEventListener('click', () => {
+      console.log('PREV BUTTON CLICK EVENT FIRED!');
+      prevStep();
+    });
+
+    // Step 1 inputs
+    const providerSelect = document.getElementById('provider');
+    const tvBillInput = document.getElementById('tvBill');
+    
+    if (providerSelect) {
+      providerSelect.addEventListener('change', (e) => {
+        window.cableCalcState.provider = e.target.value;
+        console.log('Provider set to:', window.cableCalcState.provider);
+      });
+    }
+
+    if (tvBillInput) {
+      tvBillInput.addEventListener('input', (e) => {
+        const rawValue = e.target.value;
+        const parsedValue = parseFloat(rawValue);
+        const newValue = isNaN(parsedValue) ? 0 : parsedValue;
+        window.cableCalcState.tvBill = newValue;
+        console.log('TV Bill input:', { rawValue, parsedValue, newValue, currentState: window.cableCalcState.tvBill });
+      });
+      // Also capture on blur for safety
+      tvBillInput.addEventListener('blur', (e) => {
+        const rawValue = e.target.value;
+        const parsedValue = parseFloat(rawValue);
+        window.cableCalcState.tvBill = isNaN(parsedValue) ? 0 : parsedValue;
+        console.log('TV Bill blur:', window.cableCalcState.tvBill);
+      });
+    }
+
+    // Step 2 card selection
+    document.querySelectorAll('[data-step="2"] .card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('selected');
+        const value = card.dataset.value;
+        const liveState = window.cableCalcState;
+        if (card.classList.contains('selected')) {
+          if (!liveState.content.includes(value)) liveState.content.push(value);
+        } else {
+          liveState.content = liveState.content.filter(c => c !== value);
+        }
+        console.log('Content selected:', liveState.content);
+      });
+    });
+
+    // Step 3 card selection
+    document.querySelectorAll('[data-step="3"] .card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('[data-step="3"] .card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        window.cableCalcState.houseSize = card.dataset.value;
+        console.log('House size:', window.cableCalcState.houseSize);
+      });
+    });
+
+    const deadZonesCheckbox = document.getElementById('deadZones');
+    if (deadZonesCheckbox) {
+      deadZonesCheckbox.addEventListener('change', (e) => {
+        window.cableCalcState.deadZones = e.target.checked;
+        console.log('Dead zones:', window.cableCalcState.deadZones);
+      });
+    }
+
+    // Step 4 card selection
+    document.querySelectorAll('[data-step="4"] .card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('[data-step="4"] .card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        window.cableCalcState.techLevel = card.dataset.value;
+        console.log('Tech level:', window.cableCalcState.techLevel);
+      });
+    });
+
+    // Calculate results
+    function calculateAndShowResults() {
+      console.log('=== CALCULATE FUNCTION STARTED ===');
+      // Re-read from window to ensure latest values
+      const liveState = window.cableCalcState || state;
+      console.log('Live state at calculate time:', JSON.parse(JSON.stringify(liveState)));
+      
+      // Simple calculation
+      let streamingCost = 0;
+      
+      console.log('Checking content:', liveState.content);
+      console.log('Has sports?', liveState.content.includes('sports'));
+      console.log('Has local?', liveState.content.includes('local'));
+      
+      if (liveState.content.includes('sports') || liveState.content.includes('local')) {
+        streamingCost += 72.99; // YouTube TV
+        console.log('Added YouTube TV: $72.99');
+      }
+      
+      if (liveState.content.includes('movies')) {
+        streamingCost += 15.49; // Netflix
+        console.log('Added Netflix: $15.49');
+      }
+      
+      console.log('TV Bill:', liveState.tvBill);
+      console.log('Streaming Cost:', streamingCost);
+      
+      const savings = Math.max(0, Math.round(liveState.tvBill - streamingCost));
+      console.log('Calculated savings:', savings);
+      
+      const savingsEl = document.getElementById('savingsAmount');
+      console.log('Savings element found:', !!savingsEl);
+      
+      if (savingsEl) {
+        savingsEl.textContent = `$${savings}`;
+        console.log('Updated savings display to:', `$${savings}`);
+      }
+
+      // Debug display
+      const debugStateEl = document.getElementById('debugState');
+      if (debugStateEl) {
+        debugStateEl.textContent = JSON.stringify(liveState, null, 2);
+      }
+      
+      // WiFi assessment
+      let wifiText = 'Your WiFi setup looks good for streaming.';
+      if (liveState.houseSize === 'large') {
+        wifiText = 'Large homes often benefit from a mesh WiFi system for full coverage.';
+      }
+      if (liveState.deadZones) {
+        wifiText = 'We recommend addressing WiFi dead zones before cutting cable.';
+      }
+      
+      const wifiEl = document.getElementById('wifiText');
+      if (wifiEl) {
+        wifiEl.textContent = wifiText;
+      }
+      
+      console.log('=== CALCULATE FUNCTION ENDED ===');
+    }
+
+    // Expose functions to window for inline onclick fallback
+    window.nextStepFunc = nextStep;
+    window.prevStepFunc = prevStep;
+
+    // Initialize
+    console.log('Initializing...');
+    showStep(1);
+    console.log('Step 1 shown');
+  </script>
+</body>
+</html>
