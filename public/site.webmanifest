@@ -1,0 +1,16 @@
+{
+  "name": "Mile High Tech Rescue",
+  "short_name": "MileHighTech",
+  "description": "Professional IoT, Smart Home & IT Solutions in Denver",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

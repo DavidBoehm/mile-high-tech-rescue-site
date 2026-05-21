@@ -1,3 +1,0 @@
-Test commit from Nova ☀️
-Date: 2026-04-22
-This is a test file to verify GitHub access is working.
